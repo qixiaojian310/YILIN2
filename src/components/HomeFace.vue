@@ -58,19 +58,13 @@ export default {
       return this.$parent.src
     }
   },
-  data() {
-    return{
-
-    }
-  },
   methods: {
     test: function(){
-      console.log(this)
       this.$emit('tousercenter')
     }
-  },
-  mounted: function () {
-    console.log(this);
   }
+  // mounted: function () {
+  //   console.log(this);
+  // }
 }
 </script>

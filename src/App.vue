@@ -1,11 +1,12 @@
 <template>
-  <div id="app" ref="app">
+  <div id="app">
     <Header />
     <login-mask />
     <Login />
     <SignUp />
     <home-page v-if="showPage === 'home-page'" @tousercenter="test"/>
     <user-center v-else-if="showPage === 'user-center'" />
+    <study-set-browser v-else-if="showPage === 'study-set-browser'"/>
   </div>
 </template>
 
@@ -17,6 +18,7 @@ import LoginMask from './components/LoginMask'
 import Login from './components/Login'
 import SignUp from './components/SignUp'
 import UserCenter from './components/UserCenter'
+import StudySetBrowser from './components/StudySetBrowser'
 
 export default {
   name: 'App',
@@ -30,7 +32,6 @@ export default {
   },
   methods:{
     test: function() {
-      console.log(this)
       this.showPage = 'user-center'
     }
   },
@@ -40,7 +41,8 @@ export default {
     LoginMask,
     Login,
     SignUp,
-    UserCenter
+    UserCenter,
+    StudySetBrowser
   }
 }
 </script>

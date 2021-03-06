@@ -10,11 +10,11 @@ import "jquery-ui-dist/jquery-ui.min.css"
 
 
 
-Vue.config.productionTip = false
+Vue.config.productionTip = true
 
 /* eslint-disable no-new */
-new Vue({
+var vm = new Vue({
   el: '#app',
   components: { App },
-  template: '<App/>'
+  template: '<App />'
 })

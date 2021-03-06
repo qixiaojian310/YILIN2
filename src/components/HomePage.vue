@@ -1,5 +1,5 @@
 <template>
-  <div :style="{'height': '100vh', 'overflow': 'auto'}" @scroll="scrollSwitch">
+  <div>
     <home-face ref="HomeFace" @tousercenter="test"></home-face>
     <home-intro></home-intro>
   </div>
@@ -15,7 +15,7 @@ import backPic3 from "../assets/picture/background3.jpg";
 import backPic4 from "../assets/picture/background4.jpg";
 var width;
 var height = $(window).height();
-
+let faceTop = 0;
 
 export default {
   name: "HomePage",
@@ -25,6 +25,7 @@ export default {
     };
   },
   mounted: function() {
+    window.addEventListener("scroll", this.scrollSwitch, true);
     console.log(this.src);
     $("#htc-1").css("height", height * 0.9 + "px");
     $("#htc-2").css("height", height * 0.9 + "px");
@@ -52,11 +53,6 @@ export default {
     autochange_base();
     //轮播
     $(window).resize(autochange_base);
-    // document.getElementById('htc-1').style.width = half_width + "px";
-    // document.getElementById('htc-2').style.width = half_width + "px";
-    // document.getElementById('htc-1').style.height = half_width + "px";
-    // document.getElementById('htc-2').style.height = half_width + "px";
-    // document.getElementById('homepage-image1').width = half_width;
     $("#homepage-roll-text").html("Aaaaaaaaaaaaa");
     $("#homepage-roll-text").fadeIn(2500);
     $("#homepage-roll-text").fadeOut(500);
@@ -96,15 +92,17 @@ export default {
         count = 0;
       }
     }
+    faceTop = document.getElementById("face").getBoundingClientRect().top;
+    $(".homepage-background").css(
+      "bottom",
+      (-height * 0.9 - faceTop) * 0.15 + "px"
+    );
+  },
+  beforeDestroy: function() {
+    window.removeEventListener("scroll", this.scrollSwitch, true);
   },
   methods: {
     scrollSwitch: function() {
-      console.log('lala');
-      let faceTop = document.getElementById("face").getBoundingClientRect().top;
-      $(".homepage-background").css(
-        "bottom",
-        (-height * 0.9 - faceTop) * 0.1 + "px"
-      );
       faceTop = document.getElementById("face").getBoundingClientRect().top;
       let faceBottom = document.getElementById("face").getBoundingClientRect()
         .bottom;
@@ -161,14 +159,13 @@ export default {
           (0 - height * 1.8 - offsetIntro3Top) * 0.15 + "px"
         );
         // $(".homepage-background").css("background", "url(\"../picture/background3.jpg\") no-repeat");
-        console.log("change3")
+        console.log("change3");
         this.src = backPic3;
         $(".homepage-background").css("background-size", "120% 120%");
       }
     },
     test: function() {
-      console.log(this)
-      this.$emit('tousercenter')
+      this.$emit("tousercenter");
     }
   },
   components: {

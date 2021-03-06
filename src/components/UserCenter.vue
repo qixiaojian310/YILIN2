@@ -1,75 +1,7 @@
 <template>
   <div class="container">
     <div class="row">
-      <div
-        class="col-lg-2 col-md-4 d-none d-md-block m-0 p-0 usercenter-sidebar"
-      >
-        <nav class="navbar p-0">
-          <ul class="nav flex-column" style="width: 100%" id="side-bar">
-            <li class="nav-item">
-              <a
-                class="nav-link px-5 py-2 mb-3 mt-5 usercenter-sidebar-link"
-                style="background-color: rgb(125, 226, 230)"
-                href="#"
-                >Home</a
-              >
-            </li>
-            <li class="nav-item">
-              <a
-                class="nav-link px-5 py-2 mb-3 usercenter-sidebar-link"
-                href="#"
-                >Home</a
-              >
-            </li>
-            <li class="dropdown-divider"></li>
-            <li class="nav-item">
-              <a
-                class="nav-link px-5 py-2 mb-3 usercenter-sidebar-link"
-                href="#"
-                >Home</a
-              >
-            </li>
-            <li class="nav-item">
-              <a
-                class="nav-link px-5 py-2 mb-3 usercenter-sidebar-sub-link"
-                href="#"
-                >subhome</a
-              >
-            </li>
-            <li class="dropdown-divider"></li>
-            <li class="nav-item">
-              <a
-                class="nav-link px-5 py-2 mb-3 usercenter-sidebar-link"
-                href="#"
-                >Home</a
-              >
-            </li>
-            <li class="dropdown-divider"></li>
-            <li class="nav-item">
-              <a
-                class="nav-link px-5 py-2 mb-3 usercenter-sidebar-link"
-                href="#"
-                >Home</a
-              >
-            </li>
-            <li class="nav-item">
-              <a
-                class="nav-link px-5 py-2 mb-3 usercenter-sidebar-sub-link"
-                href="#"
-                >subHome</a
-              >
-            </li>
-            <li class="dropdown-divider"></li>
-            <li class="nav-item">
-              <a
-                class="nav-link px-5 py-2 mb-3 usercenter-sidebar-link"
-                href="#"
-                >Home</a
-              >
-            </li>
-          </ul>
-        </nav>
-      </div>
+			<user-side-bar></user-side-bar>
       <div
         class="col-lg-9 col-md-7 col-sm-12 offset-lg-1 offset-md-1 offset-xl-1 offset-sm-0 mt-5 justify-content-around"
       >
@@ -79,7 +11,7 @@
           </div>
           <div class="col-10 align-content-center">
             <p class="usercenter-info-text mb-5">快点创建属于你自己的学习集</p>
-            <a class="btn-homepage1 px-5 py-3" style="text-decoration: none"
+            <a class="btn-homepage1 px-5 py-3" style="text-decoration: none" @click="tostudysetbrowser"
               >添加学习集</a
             >
           </div>
@@ -224,6 +156,7 @@
 <script>
 import userCenter from "../assets/js/usercenter";
 import UserCenterIcon from "../assets/picture/head1.jpg";
+import UserSideBar from "./UserSideBar"
 import { directive } from "vue-awesome-swiper";
 import "swiper/css/swiper.css";
 
@@ -233,6 +166,9 @@ export default {
     return {
       IconSrc: UserCenterIcon,
       swiperOptions: {
+        speed: 3500,
+        initialSlide: 0,
+        autoplay: true,
         pagination: {
           el: ".swiper-pagination",
         },
@@ -251,8 +187,16 @@ export default {
   },
   mounted: function () {
     userCenter();
-    console.log('Current Swiper instance object', this.mySwiper)
-    this.mySwiper.slideTo(3, 1000, false)
+    this.mySwiper.slideTo(0, 3000, false)
   },
+  components: {
+    UserSideBar
+  },
+  methods: {
+    tostudysetbrowser: function() {
+      console.log(this)
+      this.$root.$children[0].showPage = 'study-set-browser'
+    }
+  }
 };
 </script>
