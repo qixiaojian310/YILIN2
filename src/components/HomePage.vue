@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <home-face ref="HomeFace"></home-face>
+  <div :style="{'height': '100vh', 'overflow': 'auto'}" @scroll="scrollSwitch">
+    <home-face ref="HomeFace" @tousercenter="test"></home-face>
     <home-intro></home-intro>
   </div>
 </template>
@@ -19,17 +19,12 @@ var height = $(window).height();
 
 export default {
   name: "HomePage",
-  components: {
-    HomeFace,
-    HomeIntro
-  },
   data() {
     return {
       src: backPic1
     };
   },
   mounted: function() {
-    window.addEventListener('scroll', this.scrollSwitch, true);
     console.log(this.src);
     $("#htc-1").css("height", height * 0.9 + "px");
     $("#htc-2").css("height", height * 0.9 + "px");
@@ -170,7 +165,15 @@ export default {
         this.src = backPic3;
         $(".homepage-background").css("background-size", "120% 120%");
       }
+    },
+    test: function() {
+      console.log(this)
+      this.$emit('tousercenter')
     }
+  },
+  components: {
+    HomeFace,
+    HomeIntro
   }
 };
 </script>

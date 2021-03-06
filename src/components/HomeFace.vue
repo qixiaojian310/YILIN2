@@ -15,12 +15,13 @@
                 <h5 class="homepage-h1 pb-5">
                   精通任何学科，一次成功
                 </h5>
-                <a
+                <button
                   href="#"
                   class="mb-5 col-8 text-center btn-lg btn-homepage1 btn-block pb-3 pt-3"
+                  @click="test"
                 >
                   开始学习
-                </a>
+                </button>
               </div>
               <div class="col-7 offset-2">
                 <a href="#" class="col-6 homepage-entrance">
@@ -56,6 +57,20 @@ export default {
     src: function(){
       return this.$parent.src
     }
+  },
+  data() {
+    return{
+
+    }
+  },
+  methods: {
+    test: function(){
+      console.log(this)
+      this.$emit('tousercenter')
+    }
+  },
+  mounted: function () {
+    console.log(this);
   }
 }
 </script>

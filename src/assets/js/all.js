@@ -53,4 +53,11 @@ export default function all() {
     $(this).css("box-shadow", "none");
     $(this).children().children().css("color", "rgb(107,107,107)");
   });
+  $("#datepicker").datepicker({
+    showOtherMonths: true,
+    selectOtherMonths: true,
+    changeMonth: true,
+    changeYear: true
+  });
+  $(".checkbox").checkboxradio();
 }
