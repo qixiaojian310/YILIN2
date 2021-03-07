@@ -260,4 +260,171 @@
    </script>
    ```
 
+   6. （3/8）这两天一直在整合studySet简述的部分，难点主要是在父组件里面我想创建一个对象，里面是所有子组件的json，子组件可以在input里面修改自己的json对象点击提交之后就锁定不可以更改。
    
+      一开始我是用props，**先在子组件定义好prop然后在父组件里面把json绑定到props上但是后面我发现这样写首先这个过程是单向的，如果父组件html中的子组件的props发生改变会影响子组件但是子组件的props的数值改变不会影响父组件。这是第一个bug，第二个是我没有熟悉props的定义，后面发现实际上props可以通过this.propsName的方式在data里面和数值对应，然后我再用v-model把它和input的值对应**，这样就解决了子组件内的props和data的对应问题
+   
+      然后我发现.sync关键字可以实现子组件props改变向父组对应数据的绑定，也就是双向绑定。
+   
+      具体这部分的代码示范:
+   
+      ```vue
+      <template>
+        <div class="container">
+          <div class="row">
+            <user-side-bar></user-side-bar>
+            <div
+              class="col-lg-9 col-md-8 col-sm-12 offset-lg-1 offset-xl-1 offset-sm-0 mt-5 justify-content-around"
+            >
+              <div class="set-study-set-title text-center">title</div>
+              <!-- 学习集描述栏 -->
+              <div
+                v-for="(studySetAbstract, index) in studySetAbstracts"
+                :key="index"
+              >
+                <study-set-abstract
+                  :study-set-title.sync="studySetAbstract.studySetAbstractTitle"
+                  :study-set-content.sync="studySetAbstract.studySetAbstractContent"
+                  :study-set-ensure.sync="studySetAbstract.studySetEnsure"
+                  @studysetensure="studySetAbstract.studySetEnsure = true"
+                ></study-set-abstract>
+              </div>
+              <a
+                class="col-12 col-md-11 ml-md-5 ml-0 my-5 text-center add-study-set justify-content-center align-items-center d-flex add-rows"
+                @click="addabstract"
+              >
+                add abstracts
+              </a>
+            </div>
+          </div>
+        </div>
+      </template>
+      
+      <script>
+      import StudySetAbstract from "./StudySetAbstract";
+      import UserSideBar from "./UserSideBar";
+      export default {
+        components: {
+          UserSideBar,
+          StudySetAbstract
+        },
+        name: "StudySetBrowser",
+        data() {
+          return {
+            studySetAbstracts: [
+              {
+                studySetAbstractTitle: "123",
+                studySetAbstractContent: "345",
+                studySetAbstractsIcon: "",
+                studySetEnsure: true
+              },
+              {
+                studySetAbstractTitle: "143",
+                studySetAbstractContent: "345",
+                studySetAbstractsIcon: "",
+                studySetEnsure: true
+              },
+              {
+                studySetAbstractTitle: "153",
+                studySetAbstractContent: "345",
+                studySetAbstractsIcon: "",
+                studySetEnsure: true
+              }
+            ]
+          };
+        },
+        methods: {
+          addabstract: function() {
+            this.studySetAbstracts.push({
+              studySetAbstractTitle: "",
+              studySetAbstractContent: "",
+              studySetAbstractsIcon: "",
+              studySetEnsure: false
+            })
+          },
+          autoheight: function(){
+            var inputdescript = document.getElementById('inputdescript');
+            inputdescript.style.overflow = 'hidden';
+            inputdescript.style.height = inputdescript.scrollHeight +  'px';
+          }
+        }
+      };
+      </script>
+      
+      ```
+   
+      单个子组件的vue文件
+   
+      ```vue
+      <template>
+        <div
+          class="col-12 col-md-11 ml-md-5 ml-0 mt-5 study-set-card justify-content-center align-items-center d-flex"
+        >
+          <div class="row" style="width: 100%; height: 100%;">
+            <div class="col-3 d-flex align-items-center justify-content-center">
+              <slot>
+                <img
+                  :src="IconDefault"
+                  style="width:100%; height:auto; border-radius: 50%;"
+                />
+              </slot>
+            </div>
+            <div
+              class="col-md-8 col-6 d-flex flex-column justify-content-center align-items-center"
+            >
+              <div class="study-set-title">
+                <p v-if="studySet.studysetensure">{{ studySet.studySetTitle }}</p>
+                <input v-else type="text" v-model="studySet.studySetTitle" />
+              </div>
+              <div class="study-set-content">
+                <div class="study-set-content-font p-4">
+                  <p v-if="studySet.studysetensure">{{ studySet.studySetContent }}</p>
+                  <input v-else type="text" v-model="studySet.studySetContent" />
+                </div>
+              </div>
+            </div>
+            <div
+              class="col-3 col-md-1 d-flex justify-content-center align-items-center"
+            >
+              <a
+                class="fa fa-arrow-right fa-3x study-set-detail-link"
+                v-if="studySet.studysetensure"
+              ></a>
+              <a
+                @click="studysetsure"
+                class="fa fa-check-circle fa-3x study-set-detail-link"
+                v-else
+              ></a>
+            </div>
+          </div>
+        </div>
+      </template>
+      
+      <script>
+      import StudySetIconDefault from "../assets/picture/head1.jpg";
+      
+      export default {
+        name: "StudySetAbstract",
+        data() {
+          return {
+            IconDefault: StudySetIconDefault,
+            studySet: {
+              studySetTitle: this.studySetTitle,
+              studySetContent: this.studySetContent,
+              studysetensure: this.studySetEnsure
+            }
+          };
+        },
+        props: ["studySetTitle", "studySetContent", "studySetEnsure"],
+        methods: {
+          studysetsure: function() {
+            this.studySet.studysetensure = true;
+          }
+        }
+      };
+      </script>
+      
+      ```
+   
+      
+

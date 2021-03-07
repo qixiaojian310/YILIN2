@@ -60,9 +60,9 @@
           :key="index"
         >
           <study-set-abstract
-            :study-set-title="studySetAbstract.studySetAbstractTitle"
-            :study-set-content="studySetAbstract.studySetAbstractContent"
-            :studysetensure="studySetAbstract.studySetEnsure"
+            :study-set-title.sync="studySetAbstract.studySetAbstractTitle"
+            :study-set-content.sync="studySetAbstract.studySetAbstractContent"
+            :study-set-ensure.sync="studySetAbstract.studySetEnsure"
             @studysetensure="studySetAbstract.studySetEnsure = true"
           ></study-set-abstract>
         </div>

@@ -15,20 +15,22 @@
         class="col-md-8 col-6 d-flex flex-column justify-content-center align-items-center"
       >
         <div class="study-set-title">
-          <p v-if="study-set-ensure">{{studySetTitle}}</p>
-          <input v-else type="text" v-model="studySetTitle"/>
+          <p v-if="studySet.studysetensure">{{ studySet.studySetTitle }}</p>
+          <input v-else type="text" v-model="studySet.studySetTitle" />
         </div>
         <div class="study-set-content">
           <div class="study-set-content-font p-4">
-            <p v-if="study-set-ensure">{{studySetTitle}}</p>
-            <input v-else type="text" v-model="studySetContent" />
-					</div>
+            <p v-if="studySet.studysetensure">{{ studySet.studySetContent }}</p>
+            <input v-else type="text" v-model="studySet.studySetContent" />
+          </div>
         </div>
       </div>
-      <div class="col-3 col-md-1 d-flex justify-content-center align-items-center">
+      <div
+        class="col-3 col-md-1 d-flex justify-content-center align-items-center"
+      >
         <a
           class="fa fa-arrow-right fa-3x study-set-detail-link"
-          v-if="study-set-ensure"
+          v-if="studySet.studysetensure"
         ></a>
         <a
           @click="studysetsure"
@@ -41,20 +43,24 @@
 </template>
 
 <script>
-import StudySetIconDefault from "../assets/picture/head1.jpg"
+import StudySetIconDefault from "../assets/picture/head1.jpg";
 
 export default {
   name: "StudySetAbstract",
   data() {
     return {
-				IconDefault: StudySetIconDefault,
-        studySetEnsure: false
-		};
+      IconDefault: StudySetIconDefault,
+      studySet: {
+        studySetTitle: this.studySetTitle,
+        studySetContent: this.studySetContent,
+        studysetensure: this.studySetEnsure
+      }
+    };
   },
-	props: ['studySetTitle','studySetContent'],
-  methods:{
+  props: ["studySetTitle", "studySetContent", "studySetEnsure"],
+  methods: {
     studysetsure: function() {
-      this.studySetEnsure = true;
+      this.studySet.studysetensure = true;
     }
   }
 };
