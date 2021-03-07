@@ -154,7 +154,6 @@
 </template>
 
 <script>
-import userCenter from "../assets/js/usercenter";
 import UserCenterIcon from "../assets/picture/head1.jpg";
 import UserSideBar from "./UserSideBar"
 import { directive } from "vue-awesome-swiper";
@@ -186,7 +185,6 @@ export default {
     swiper: directive,
   },
   mounted: function () {
-    userCenter();
     this.mySwiper.slideTo(0, 3000, false)
   },
   components: {

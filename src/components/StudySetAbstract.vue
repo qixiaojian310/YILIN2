@@ -12,21 +12,28 @@
         </slot>
       </div>
       <div
-        class="col-8 d-flex flex-column justify-content-center align-items-center"
+        class="col-md-8 col-6 d-flex flex-column justify-content-center align-items-center"
       >
-        <p class="study-set-title">
-          {{studySetTitle}}
-        </p>
+        <div class="study-set-title">
+          <p v-if="study-set-ensure">{{studySetTitle}}</p>
+          <input v-else type="text" v-model="studySetTitle"/>
+        </div>
         <div class="study-set-content">
-          <p class="study-set-content-font p-4">
-						{{studySetContent}}
-					</p>
+          <div class="study-set-content-font p-4">
+            <p v-if="study-set-ensure">{{studySetTitle}}</p>
+            <input v-else type="text" v-model="studySetContent" />
+					</div>
         </div>
       </div>
-      <div class="col-1 d-flex justify-content-center align-items-center">
+      <div class="col-3 col-md-1 d-flex justify-content-center align-items-center">
         <a
-          href="createstudyset.html"
           class="fa fa-arrow-right fa-3x study-set-detail-link"
+          v-if="study-set-ensure"
+        ></a>
+        <a
+          @click="studysetsure"
+          class="fa fa-check-circle fa-3x study-set-detail-link"
+          v-else
         ></a>
       </div>
     </div>
@@ -40,9 +47,15 @@ export default {
   name: "StudySetAbstract",
   data() {
     return {
-				IconDefault: StudySetIconDefault
+				IconDefault: StudySetIconDefault,
+        studySetEnsure: false
 		};
   },
-	props: ['studySetTitle','studySetContent']
+	props: ['studySetTitle','studySetContent'],
+  methods:{
+    studysetsure: function() {
+      this.studySetEnsure = true;
+    }
+  }
 };
 </script>

@@ -1,4 +1,4 @@
-export default function userCenter(){
+export default function userSideBar(){
   function autochangesize(){
     var sidebar_height=$(window).height()-$("header").height()+"px";
     var sidebar_top=$("header").height()+"px";

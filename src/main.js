@@ -7,6 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.min'
 import "jquery-ui-dist/jquery-ui"
 import "jquery-ui-dist/jquery-ui.min.css"
+import "font-awesome/css/font-awesome.min.css"
 
 
 

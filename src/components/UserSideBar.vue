@@ -59,7 +59,12 @@
 </template>
 
 <script>
+import userSideBar from "../assets/js/userSideBar"
+
 export default {
-	name: 'UserSideBar'
+	name: 'UserSideBar',
+  mounted: function () {
+    userSideBar()
+  }
 }
 </script>
