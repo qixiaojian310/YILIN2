@@ -78,41 +78,4 @@ export default function createInit() {
       }
     }
   );
-  //初始化编辑器
-  var E = window.wangEditor;
-  var editor = new E('#editor');
-  editor.create();
-  editor.$toolbarElem[0].style.flexWrap = "wrap";
-  // 获取选择的文字
-  var txtRange;
-  var allChildren;
-  var parentNode;
-  $("#editor").mouseup(function () {
-    if (window.getSelection().isCollapsed == false) {
-      var txtFistOffset = window.getSelection().anchorOffset;
-      var txtLastOffset = window.getSelection().focusOffset;
-
-      var txtSelection = window.getSelection();
-      txtRange = txtSelection.getRangeAt(0);
-      //获取所有的选中的节点
-      var documentFragment = txtRange.cloneContents();
-      var count = documentFragment.childNodes.length;
-      //获取父亲节点
-      parentNode = editor.$textElem[0];
-      //返回父亲节点下的所有子节点
-      allChildren = parentNode.childNodes;
-      //遍历整个字节点集合返回选择的首节点的相对位置
-      var indexOfFirstSelectNode;
-      for (var i = 0; i < allChildren.length; i++) {
-        if (allChildren[i] == window.getSelection().anchorNode.parentNode || allChildren[i] == window.getSelection().focusNode.parentNode) {
-          indexOfFirstSelectNode = i;
-          break;
-        }
-      }
-      alert("起点位置" + txtFistOffset + "," + "终点位置" + txtLastOffset + "\n选区起点相对整个文档的位置" + indexOfFirstSelectNode + "\n选区的总体范围大小" + count);
-      // for (count = 0; count < documentFragment.childNodes.length; count++) {
-      //     var childNode = documentFragment.childNodes[count];
-      // }
-    }
-  })
 }

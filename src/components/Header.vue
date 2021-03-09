@@ -16,7 +16,7 @@
         <span class="navbar-toggler-icon"></span>
       </button>
 
-      <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+      <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
         <create-header v-if="showArea === 'create-center'"></create-header>
         <home-header v-else></home-header>
         <div class="login-head">
