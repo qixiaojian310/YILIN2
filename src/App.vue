@@ -1,12 +1,13 @@
 <template>
   <div id="app">
-    <Header />
+    <Header :pagename="this.showPage"/>
     <login-mask />
     <Login />
     <SignUp />
     <home-page v-if="showPage === 'home-page'" @tousercenter="test"/>
     <user-center v-else-if="showPage === 'user-center'" />
     <study-set-browser v-else-if="showPage === 'study-set-browser'"/>
+    <create-center v-else-if="showPage === 'create-center'" />
   </div>
 </template>
 
@@ -19,6 +20,7 @@ import Login from './components/Login'
 import SignUp from './components/SignUp'
 import UserCenter from './components/UserCenter'
 import StudySetBrowser from './components/StudySetBrowser'
+import CreateCenter from './components/CreateCenter'
 
 export default {
   name: 'App',
@@ -42,7 +44,8 @@ export default {
     Login,
     SignUp,
     UserCenter,
-    StudySetBrowser
+    StudySetBrowser,
+    CreateCenter
   }
 }
 </script>

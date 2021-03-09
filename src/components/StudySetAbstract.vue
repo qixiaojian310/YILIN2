@@ -29,6 +29,7 @@
         class="col-3 col-md-1 d-flex justify-content-center align-items-center"
       >
         <a
+          @click="tocreatecenter"
           class="fa fa-arrow-right fa-3x study-set-detail-link"
           v-if="studySet.studysetensure"
         ></a>
@@ -61,6 +62,9 @@ export default {
   methods: {
     studysetsure: function() {
       this.studySet.studysetensure = true;
+    },
+    tocreatecenter: function() {
+      this.$root.$children[0].showPage = 'create-center'
     }
   }
 };

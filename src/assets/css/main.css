@@ -1,6 +1,11 @@
-@media (min-width: 1300px) {
+@media (min-width: 1400px) {
     .container{
-        max-width: 1300px;
+        max-width: 1400px;
+    }
+}
+@media (max-width: 1400px) {
+    .container{
+        min-width: 96px;
     }
 }
 @media (max-width: 992px){
@@ -10,10 +15,23 @@
     .login-head{
         width: 50px;
     }
+    .container{
+        min-width: 740px !important;
+    }
 }
 @media (min-width: 992px){
     .dropdown-content{
         right: 0%;
+    }
+}
+@media (max-width: 768px){
+    .container{
+        min-width: 576px !important;
+    }
+}
+@media (max-width: 576px){
+    .container{
+        min-width: 540px !important;
     }
 }
 @media (max-width: 500px){
@@ -73,7 +91,6 @@
     border-radius: 50%;
     display: block;
     margin-right: 7% ; 
-    margin-left: 7%;
 }
 .dropdown-content {
     z-index: 10;
