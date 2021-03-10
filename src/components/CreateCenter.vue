@@ -300,3 +300,26 @@ export default {
   }
 };
 </script>
+
+<style>
+@media (max-width: 1400px) {
+  .container {
+    min-width: 960px;
+  }
+}
+@media (max-width: 992px) {
+  .container {
+    min-width: 740px !important;
+  }
+}
+@media (max-width: 768px) {
+  .container {
+    min-width: 576px !important;
+  }
+}
+@media (max-width: 576px) {
+  .container {
+    min-width: 540px !important;
+  }
+}
+</style>

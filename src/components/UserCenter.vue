@@ -80,11 +80,11 @@ export default {
             {
               title: '1234',
               content: '12345',
-              rotateContent: '123456'
+              rotateContent: 'lala'
             },
             {
               title: '1234',
-              content: '12345',
+              content: '45',
               rotateContent: '123456'
             }
           ],
@@ -97,7 +97,7 @@ export default {
             {
               title: '1234',
               content: '12345',
-              rotateContent: '123456'
+              rotateContent: '992'
             }
           ]
         ],
@@ -111,7 +111,7 @@ export default {
             {
               title: '1234',
               content: '12345',
-              rotateContent: '123456'
+              rotateContent: 'jianjian'
             }
           ],
           [
