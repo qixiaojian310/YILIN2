@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Header :pagename="this.showPage"/>
+    <Header :pagename.sync="this.showPage"/>
     <login-mask />
     <Login />
     <SignUp />

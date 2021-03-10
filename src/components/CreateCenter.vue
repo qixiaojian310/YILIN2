@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div>
     <div class="study-set-head">
       <div class="container">
         <div class="row clearfix">
@@ -183,6 +183,45 @@
                   dcg
                 </div>
               </div>
+                            <div class="col-3 p-0 m-3 set-rotate-trigger">
+                <div
+                  class="usercenter-study-set-alone text-center justify-content-center align-items-center"
+                >
+                  <p class="usercenter-study-set-alone-title">abc</p>
+                  <p class="usercenter-study-set-alone-content">
+                    abcdefg
+                  </p>
+                </div>
+                <div class="usercenter-study-set-alone-translate text-center">
+                  dcg
+                </div>
+              </div>
+              <div class="col-3 p-0 m-3 set-rotate-trigger">
+                <div
+                  class="usercenter-study-set-alone text-center justify-content-center align-items-center"
+                >
+                  <p class="usercenter-study-set-alone-title">abc</p>
+                  <p class="usercenter-study-set-alone-content">
+                    abcdefg
+                  </p>
+                </div>
+                <div class="usercenter-study-set-alone-translate text-center">
+                  dcg
+                </div>
+              </div>
+              <div class="col-3 p-0 m-3 set-rotate-trigger">
+                <div
+                  class="usercenter-study-set-alone text-center justify-content-center align-items-center"
+                >
+                  <p class="usercenter-study-set-alone-title">abc</p>
+                  <p class="usercenter-study-set-alone-content">
+                    abcdefg
+                  </p>
+                </div>
+                <div class="usercenter-study-set-alone-translate text-center">
+                  dcg
+                </div>
+              </div>
               <!-- 添加单词卡片 -->
               <div class="col-3 p-0 m-3"></div>
             </div>
@@ -192,7 +231,7 @@
     </div>
     <!-- 转换器 -->
     <a
-      class="btn study-set-toggle1 d-flex align-items-center justify-content-center"
+      class="study-set-toggle1 d-flex align-items-center justify-content-center"
     >
       <i id="toggle-btn1" class="fa fa-4x fa-arrow-circle-right"></i>
       <i id="toggle-btn2" class="fa fa-4x fa-arrow-circle-left"></i>
@@ -218,6 +257,9 @@
           </div>
         </div>
       </div>
+    </div>
+    <div class="create-set-background">
+
     </div>
   </div>
 </template>

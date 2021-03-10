@@ -17,7 +17,7 @@
       </button>
 
       <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
-        <create-header v-if="showArea === 'create-center'"></create-header>
+        <create-header v-if="pagename === 'create-center'"></create-header>
         <home-header v-else></home-header>
         <div class="login-head">
           <a class="login-head" href="#">
@@ -47,7 +47,6 @@ export default {
   data() {
     return {
       img: HeadIcon,
-      showArea: this.pagename
     };
   },
   methods: {
