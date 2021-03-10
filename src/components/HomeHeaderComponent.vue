@@ -1,5 +1,5 @@
 <template>
-  <div class="d-flex">
+  <div class="d-flex justify-content-between" style="width: 80%">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
         <a class="nav-link head-bar-items" href="#"
