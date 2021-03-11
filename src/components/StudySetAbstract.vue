@@ -21,7 +21,7 @@
         <div class="study-set-content">
           <div class="study-set-content-font p-4">
             <p v-if="studySet.studysetensure">{{ studySet.studySetContent }}</p>
-            <input v-else type="text" v-model="studySet.studySetContent" />
+            <text-area-component v-else @textareainput="getTextAreaValue" :id="'studysetcontent'+studysetid"></text-area-component>
           </div>
         </div>
       </div>
@@ -45,9 +45,13 @@
 
 <script>
 import StudySetIconDefault from "../assets/picture/head1.jpg";
+import TextAreaComponent from './TextAreaComponent.vue';
 
 export default {
   name: "StudySetAbstract",
+  components:{
+    TextAreaComponent
+  },
   data() {
     return {
       IconDefault: StudySetIconDefault,
@@ -58,7 +62,7 @@ export default {
       }
     };
   },
-  props: ["studysettitle", "studysetcontent", "studysetensure"],
+  props: ["studysettitle", "studysetcontent", "studysetensure", "studysetid"],
   methods: {
     studysetsure: function() {
       this.studySet.studysetensure = true;
@@ -67,6 +71,9 @@ export default {
     },
     tocreatecenter: function() {
       this.$root.$children[0].showPage = 'create-center'
+    },
+    getTextAreaValue: function(value){
+      this.studySet.studySetContent = value
     }
   }
 };

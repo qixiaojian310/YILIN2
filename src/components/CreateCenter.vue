@@ -62,19 +62,20 @@
     <div class="study-set-show-area2">
       <div class="container">
         <div class="row clearfix">
-          <div class="col-12">
+          <div class="col-12 d-flex justify-content-center">
             <div
-              class="col-12 mt-4 row d-flex justify-content-center flex-wrap"
+              class="col-12 mt-4 row d-flex justify-content-start flex-wrap"
             >
-              <div class="col-3" v-for="(card, index) in wordCardSet" :key="index">
+              <div class="col-4" v-for="(card, index) in wordCardSet" :key="index">
                 <rotate-card
-                  
                   :title="card.title"
                   :content="card.content"
                   :rotateContent="card.rotateContent"
                 ></rotate-card>
               </div>
-              <add-card></add-card>
+              <div class="col-4">
+                <add-card @cardensure="cardEnsure"></add-card>
+              </div>
             </div>
             <!-- 添加单词卡片 -->
           </div>
@@ -212,6 +213,11 @@ export default {
         // }
       }
     });
+  },
+  methods:{
+    cardEnsure: function(value) {
+      this.wordCardSet.push(value)
+    }
   }
 };
 </script>

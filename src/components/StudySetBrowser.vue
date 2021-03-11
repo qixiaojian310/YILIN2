@@ -34,7 +34,7 @@
                   >description</label
                 >
                 <div class="col-lg-8 col-md-6 col-sm-6">
-                  <text-area-component :placeholdertext="'输入您的学习集内容'" :id="'studysetcontent'"></text-area-component>
+                  <text-area-component :placeholdertext="'输入您的学习集内容'" :id="'studysetallcontent'"></text-area-component>
                 </div>
               </div>
               <div class="input-border"></div>
@@ -58,6 +58,7 @@
             :studysettitle.sync="studySetAbstract.studySetAbstractTitle"
             :studysetcontent.sync="studySetAbstract.studySetAbstractContent"
             :studysetensure.sync="studySetAbstract.studySetEnsure"
+            :studysetid.sync="studySetAbstract.studySetId"
             @getindex="changeIndex(index)"            
             @ready="syncReady"
           ></study-set-abstract>
@@ -89,19 +90,8 @@ export default {
       index: 0,
       studySetAbstracts: [
         {
+          studySetId: 0,
           studySetAbstractTitle: "123",
-          studySetAbstractContent: "345",
-          studySetAbstractsIcon: "",
-          studySetEnsure: true
-        },
-        {
-          studySetAbstractTitle: "143",
-          studySetAbstractContent: "345",
-          studySetAbstractsIcon: "",
-          studySetEnsure: true
-        },
-        {
-          studySetAbstractTitle: "153",
           studySetAbstractContent: "345",
           studySetAbstractsIcon: "",
           studySetEnsure: true
@@ -122,7 +112,9 @@ export default {
       this.index = index
     },
     addabstract: function() {
+      this.index = this.index+1
       this.studySetAbstracts.push({
+        studySetId: this.index,
         studySetAbstractTitle: "",
         studySetAbstractContent: "",
         studySetAbstractsIcon: "",
