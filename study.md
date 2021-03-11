@@ -262,12 +262,105 @@
 
    6. （3/8）这两天一直在整合studySet简述的部分，难点主要是在父组件里面我想创建一个对象，里面是所有子组件的json，子组件可以在input里面修改自己的json对象点击提交之后就锁定不可以更改。
    
-      一开始我是用props，**先在子组件定义好prop然后在父组件里面把json绑定到props上但是后面我发现这样写首先这个过程是单向的，如果父组件html中的子组件的props发生改变会影响子组件但是子组件的props的数值改变不会影响父组件。这是第一个bug，第二个是我没有熟悉props的定义，后面发现实际上props可以通过this.propsName的方式在data里面和数值对应，然后我再用v-model把它和input的值对应**，这样就解决了子组件内的props和data的对应问题
+      *一开始我是用props，**先在子组件定义好prop然后在父组件里面把json绑定到props上但是后面我发现这样写首先这个过程是单向的，如果父组件html中的子组件的props发生改变会影响子组件但是子组件的props的数值改变不会影响父组件。这是第一个bug，第二个是我没有熟悉props的定义，后面发现实际上props可以通过this.propsName的方式在data里面和数值对应，然后我再用v-model把它和input的值对应**，这样就解决了子组件内的props和data的对应问题*
    
+      
+   
+      今天发现之前想的完全错了我总结成一下几个点
+   
+      1. props可以通过this读取，在组件内他和data是一样的，都可以在各个位置获取到
+      
+      2. 可以把data的值传递给props，也可以把props的值传递给data，在子组件的vue文件内，这两个是等价访问的
+      
+      3. .sync必须要在子组件里面写上一个this.$emit('update:data', value) update:是必须加的
+      
+      4. 所以与其这样还不如自己写，我们也可以用emit，先提交事件，然后再在父组件中监听，提交事件的监听可以监听一个值，这个值**可以是对象**。
+      
+         如：子组件
+      
+         ```vue
+         <template>
+           <textarea
+             class="form-control study-set-info-input"
+             :placeholder="placeholdertext"
+             :id="id"
+             :value="value"
+             @input="autoheight"
+           />
+         </template>
+         
+         <script>
+         export default {
+           name: "TextAreaCompontent",
+           props: ['placeholdertext','value','id'],
+           data () {
+             return {
+               
+             }
+           },
+           methods: {
+             autoheight: function() {
+               var inputdescript = document.getElementById(this.id);
+               inputdescript.style.overflow = "hidden";
+               inputdescript.style.height = inputdescript.scrollHeight + "px";
+               // 直接在组件外监听事件就可以拿到value
+               this.$emit('textareainput',inputdescript.value)
+             }
+           }
+         };
+         </script>
+         
+         ```
+      
+         它的使用
+      
+         ```vue
+         <text-area-component :placeholdertext="'输入背面内容'" @textareainput="wordCard.rotateContent = $event" :value="wordCard.rotateContent" :id="'rotatecontent'" :style="{width: '90%'}">
+         </text-area-component>
+         
+         ...
+         <script>
+         import TextAreaComponent from './TextAreaComponent'
+         export default {
+           name: 'AddCard',
+           components: {
+             TextAreaComponent
+           },
+           data(){
+             return{
+               wordCard:{
+                 title:"",
+                 content:"",
+                 rotateContent:""
+               }
+             }
+           },
+           methods:{
+             cardEnsure: function(){
+               this.$emit('cardensure', this.wordCard);
+               this.wordCard = {
+                 title: "",
+                 content: "",
+                 rotateContent: ""
+               }
+             }
+           }
+         }
+         </script>
+         
+         ```
+      
+      5. 监听有两种方法
+      
+      - 可以用方法来监听，方法的第一个参数就是emit带来的值
+         - 可以用$event直接监听，$event就是emit带来的值
+   
+      
+      
       然后我发现.sync关键字可以实现子组件props改变向父组对应数据的绑定，也就是双向绑定。
-   
+      
       具体这部分的代码示范:
-   
+      
       ```vue
       <template>
         <div class="container">
@@ -332,7 +425,7 @@
               }
             ]
           };
-        },
+     },
         methods: {
           addabstract: function() {
             this.studySetAbstracts.push({
@@ -352,9 +445,9 @@
       </script>
       
       ```
-   
+      
       单个子组件的vue文件
-   
+      
       ```vue
       <template>
         <div
@@ -425,6 +518,6 @@
       </script>
       
       ```
-   
+      
       
 
