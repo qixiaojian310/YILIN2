@@ -6,9 +6,9 @@ export default function createInit() {
 
   function creastudyset_autochange() {
     var window_width = $(window).width();
-    var window_height =$(window).height();
-    var backgroundHeight = window_height-$("header").height()
-    var studySetHeadHeight = $(".study-set-head").height()+$("header").height();
+    var window_height = $(window).height();
+    var backgroundHeight = window_height - $("header").height()
+    var studySetHeadHeight = $(".study-set-head").height() + $("header").height();
     var window_height = $(window).height();
     var switch_botton = window_width * 0.14 + "px";
     var show_area = window_width + "px";
@@ -16,8 +16,8 @@ export default function createInit() {
     show_area_global = show_area;
     hide_area_global = hide_area;
     $(".study-set-toggle1").css("height", "100px");
-    $(".study-set-toggle1").css("width",window_width + "px");
-    $(".study-set-toggle1").css("top", $("header").height()+"px");
+    $(".study-set-toggle1").css("width", window_width + "px");
+    $(".study-set-toggle1").css("top", $("header").height() + "px");
     $(".study-set-show-area1").css("top", studySetHeadHeight + 100 + "px");
     $(".study-set-show-area1").css("width", show_area);
     $(".study-set-show-area2").css("top", studySetHeadHeight + 100 + "px");
@@ -25,12 +25,12 @@ export default function createInit() {
     $(".study-set-show-area2").css("width", show_area);
     var area1_height = $(".study-set-show-area1").height();
     var area2_height = $(".study-set-show-area2").height();
-    
+
     var ram_height = area1_height;
-    if(ram_height<area2_height){
+    if (ram_height < area2_height) {
       ram_height = area1_height
     }
-    $(".create-set-background").css("height",ram_height+"px")
+    $(".create-set-background").css("height", ram_height + 100 + $("header").height() + "px")
 
 
     if (flag == true) {

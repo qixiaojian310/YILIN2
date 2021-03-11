@@ -52,16 +52,18 @@ export default {
     return {
       IconDefault: StudySetIconDefault,
       studySet: {
-        studySetTitle: this.studySetTitle,
-        studySetContent: this.studySetContent,
-        studysetensure: this.studySetEnsure
+        studySetTitle: this.studysettitle,
+        studySetContent: this.studysetcontent,
+        studysetensure: this.studysetensure
       }
     };
   },
-  props: ["studySetTitle", "studySetContent", "studySetEnsure"],
+  props: ["studysettitle", "studysetcontent", "studysetensure"],
   methods: {
     studysetsure: function() {
       this.studySet.studysetensure = true;
+      this.$emit('getindex')
+      this.$emit('ready', this.studySet)
     },
     tocreatecenter: function() {
       this.$root.$children[0].showPage = 'create-center'

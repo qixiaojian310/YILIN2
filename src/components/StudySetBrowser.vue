@@ -34,12 +34,7 @@
                   >description</label
                 >
                 <div class="col-lg-8 col-md-6 col-sm-6">
-                  <textarea
-                    class="form-control study-set-info-input"
-                    placeholder="请简要描述您的学习集"
-                    id="inputdescript"
-                    @input="autoheight"
-                  />
+                  <text-area-component :placeholdertext="'输入您的学习集内容'" :id="'studysetcontent'"></text-area-component>
                 </div>
               </div>
               <div class="input-border"></div>
@@ -60,10 +55,11 @@
           :key="index"
         >
           <study-set-abstract
-            :study-set-title.sync="studySetAbstract.studySetAbstractTitle"
-            :study-set-content.sync="studySetAbstract.studySetAbstractContent"
-            :study-set-ensure.sync="studySetAbstract.studySetEnsure"
-            @studysetensure="studySetAbstract.studySetEnsure = true"
+            :studysettitle.sync="studySetAbstract.studySetAbstractTitle"
+            :studysetcontent.sync="studySetAbstract.studySetAbstractContent"
+            :studysetensure.sync="studySetAbstract.studySetEnsure"
+            @getindex="changeIndex(index)"            
+            @ready="syncReady"
           ></study-set-abstract>
         </div>
         <a
@@ -79,15 +75,18 @@
 
 <script>
 import StudySetAbstract from "./StudySetAbstract";
+import TextAreaComponent from './TextAreaComponent.vue';
 import UserSideBar from "./UserSideBar";
 export default {
   components: {
     UserSideBar,
-    StudySetAbstract
+    StudySetAbstract,
+    TextAreaComponent    
   },
   name: "StudySetBrowser",
   data() {
     return {
+      index: 0,
       studySetAbstracts: [
         {
           studySetAbstractTitle: "123",
@@ -111,6 +110,17 @@ export default {
     };
   },
   methods: {
+    syncReady: function(studyset) {
+      console.log(this)
+      this.studySetAbstracts[this.index].studySetEnsure = true
+      this.studySetAbstracts[this.index].studySetAbstractContent = studyset.studySetContent
+      this.studySetAbstracts[this.index].studySetAbstractTitle = studyset.studySetTitle
+      console.log(studyset);
+    },
+    changeIndex: function(index) {
+      console.log(index)
+      this.index = index
+    },
     addabstract: function() {
       this.studySetAbstracts.push({
         studySetAbstractTitle: "",

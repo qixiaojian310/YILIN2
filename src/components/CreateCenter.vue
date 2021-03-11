@@ -66,165 +66,17 @@
             <div
               class="col-12 mt-4 row d-flex justify-content-center flex-wrap"
             >
-              <div class="col-3 p-0 m-3 set-rotate-trigger">
-                <div
-                  class="usercenter-study-set-alone text-center justify-content-center align-items-center"
-                >
-                  <p class="usercenter-study-set-alone-title">abc</p>
-                  <p class="usercenter-study-set-alone-content">
-                    abcdefg
-                  </p>
-                </div>
-                <div class="usercenter-study-set-alone-translate text-center">
-                  dcg
-                </div>
+              <div class="col-3" v-for="(card, index) in wordCardSet" :key="index">
+                <rotate-card
+                  
+                  :title="card.title"
+                  :content="card.content"
+                  :rotateContent="card.rotateContent"
+                ></rotate-card>
               </div>
-              <div class="col-3 p-0 m-3 set-rotate-trigger">
-                <div
-                  class="usercenter-study-set-alone text-center justify-content-center align-items-center"
-                >
-                  <p class="usercenter-study-set-alone-title">abc</p>
-                  <p class="usercenter-study-set-alone-content">
-                    abcdefg
-                  </p>
-                </div>
-                <div class="usercenter-study-set-alone-translate text-center">
-                  dcg
-                </div>
-              </div>
-              <div class="col-3 p-0 m-3 set-rotate-trigger">
-                <div
-                  class="usercenter-study-set-alone text-center justify-content-center align-items-center"
-                >
-                  <p class="usercenter-study-set-alone-title">abc</p>
-                  <p class="usercenter-study-set-alone-content">
-                    abcdefg
-                  </p>
-                </div>
-                <div class="usercenter-study-set-alone-translate text-center">
-                  dcg
-                </div>
-              </div>
-              <div class="col-3 p-0 m-3 set-rotate-trigger">
-                <div
-                  class="usercenter-study-set-alone text-center justify-content-center align-items-center"
-                >
-                  <p class="usercenter-study-set-alone-title">abc</p>
-                  <p class="usercenter-study-set-alone-content">
-                    abcdefg
-                  </p>
-                </div>
-                <div class="usercenter-study-set-alone-translate text-center">
-                  dcg
-                </div>
-              </div>
-              <div class="col-3 p-0 m-3 set-rotate-trigger">
-                <div
-                  class="usercenter-study-set-alone text-center justify-content-center align-items-center"
-                >
-                  <p class="usercenter-study-set-alone-title">abc</p>
-                  <p class="usercenter-study-set-alone-content">
-                    abcdefg
-                  </p>
-                </div>
-                <div class="usercenter-study-set-alone-translate text-center">
-                  dcg
-                </div>
-              </div>
-              <div class="col-3 p-0 m-3 set-rotate-trigger">
-                <div
-                  class="usercenter-study-set-alone text-center justify-content-center align-items-center"
-                >
-                  <p class="usercenter-study-set-alone-title">abc</p>
-                  <p class="usercenter-study-set-alone-content">
-                    abcdefg
-                  </p>
-                </div>
-                <div class="usercenter-study-set-alone-translate text-center">
-                  dcg
-                </div>
-              </div>
-              <div class="col-3 p-0 m-3 set-rotate-trigger">
-                <div
-                  class="usercenter-study-set-alone text-center justify-content-center align-items-center"
-                >
-                  <p class="usercenter-study-set-alone-title">abc</p>
-                  <p class="usercenter-study-set-alone-content">
-                    abcdefg
-                  </p>
-                </div>
-                <div class="usercenter-study-set-alone-translate text-center">
-                  dcg
-                </div>
-              </div>
-              <div class="col-3 p-0 m-3 set-rotate-trigger">
-                <div
-                  class="usercenter-study-set-alone text-center justify-content-center align-items-center"
-                >
-                  <p class="usercenter-study-set-alone-title">abc</p>
-                  <p class="usercenter-study-set-alone-content">
-                    abcdefg
-                  </p>
-                </div>
-                <div class="usercenter-study-set-alone-translate text-center">
-                  dcg
-                </div>
-              </div>
-              <div class="col-3 p-0 m-3 set-rotate-trigger">
-                <div
-                  class="usercenter-study-set-alone text-center justify-content-center align-items-center"
-                >
-                  <p class="usercenter-study-set-alone-title">abc</p>
-                  <p class="usercenter-study-set-alone-content">
-                    abcdefg
-                  </p>
-                </div>
-                <div class="usercenter-study-set-alone-translate text-center">
-                  dcg
-                </div>
-              </div>
-                            <div class="col-3 p-0 m-3 set-rotate-trigger">
-                <div
-                  class="usercenter-study-set-alone text-center justify-content-center align-items-center"
-                >
-                  <p class="usercenter-study-set-alone-title">abc</p>
-                  <p class="usercenter-study-set-alone-content">
-                    abcdefg
-                  </p>
-                </div>
-                <div class="usercenter-study-set-alone-translate text-center">
-                  dcg
-                </div>
-              </div>
-              <div class="col-3 p-0 m-3 set-rotate-trigger">
-                <div
-                  class="usercenter-study-set-alone text-center justify-content-center align-items-center"
-                >
-                  <p class="usercenter-study-set-alone-title">abc</p>
-                  <p class="usercenter-study-set-alone-content">
-                    abcdefg
-                  </p>
-                </div>
-                <div class="usercenter-study-set-alone-translate text-center">
-                  dcg
-                </div>
-              </div>
-              <div class="col-3 p-0 m-3 set-rotate-trigger">
-                <div
-                  class="usercenter-study-set-alone text-center justify-content-center align-items-center"
-                >
-                  <p class="usercenter-study-set-alone-title">abc</p>
-                  <p class="usercenter-study-set-alone-content">
-                    abcdefg
-                  </p>
-                </div>
-                <div class="usercenter-study-set-alone-translate text-center">
-                  dcg
-                </div>
-              </div>
-              <!-- 添加单词卡片 -->
-              <div class="col-3 p-0 m-3"></div>
+              <add-card></add-card>
             </div>
+            <!-- 添加单词卡片 -->
           </div>
         </div>
       </div>
@@ -258,21 +110,42 @@
         </div>
       </div>
     </div>
-    <div class="create-set-background">
-
-    </div>
+    <div class="create-set-background"></div>
   </div>
 </template>
 
 <script>
 import createInit from "../assets/js/createstudyset";
+import AddCard from './AddCard.vue';
+import RotateCard from "./RotateCard";
 
 export default {
   name: "CreateCenter",
+  components: {
+    RotateCard,
+    AddCard
+  },
   data() {
     return {
       editor: null,
-      editorHtml: ""
+      editorHtml: "",
+      wordCardSet: [
+        {
+          title: "123",
+          content: "456",
+          rotateContent: "12345"
+        },
+        {
+          title: "123",
+          content: "456",
+          rotateContent: "12345"
+        },
+        {
+          title: "123",
+          content: "456",
+          rotateContent: "12345"
+        }
+      ]
     };
   },
   mounted: function() {

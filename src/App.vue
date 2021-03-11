@@ -52,4 +52,7 @@ export default {
 
 <style>
 @import './assets/css/main.css';
+#app{
+  overflow: visible;
+}
 </style>

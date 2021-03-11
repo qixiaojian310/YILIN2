@@ -26,7 +26,9 @@
               <div class="swiper-slide" v-for="(slide,index) in allCard" :key="index">
                 <div class="row d-flex justify-content-center" v-for="(row,rowindex) in slide" :key="rowindex">
                   <template v-for="(item, itemindex) in row">
-                    <rotate-card :title="item.title" :content="item.content" :rotateContent="item.rotateContent" :key="itemindex"></rotate-card>
+                    <div class="col-4" :key="itemindex">
+                      <rotate-card :title="item.title" :content="item.content" :rotateContent="item.rotateContent"></rotate-card>
+                    </div>
                   </template>
                 </div>
               </div>

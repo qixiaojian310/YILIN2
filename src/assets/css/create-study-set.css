@@ -19,4 +19,5 @@ body {
 }
 .create-set-background{
     position: relative;
+    z-index: 0;
 }

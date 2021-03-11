@@ -371,9 +371,6 @@ p.login-link{
     font-weight: 600;
     color: rgb(0, 0, 0);
 }
-.study-set-info-input{
-    border: 0px;
-}
 .add-study-set{
     border: 1px dashed;
     box-shadow: 0px 5px 10px rgb(107, 107, 107);
@@ -446,6 +443,7 @@ p.login-link{
 }
 .study-set-show-area2{
     position: absolute;
+    z-index: 1000;
     /* background: rgb(241,241,241); */
     /* top: 0; */
     /* background: red; */
