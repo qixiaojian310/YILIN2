@@ -283,7 +283,7 @@ p.login-link{
     display: flex;
     width: 100%;
     flex-direction: column;
-    height: 150px;
+    height: 100%;
     background: rgba(255, 255, 255, 0.6 );
     border-radius: 10px;
     border: 2px dashed;
@@ -291,9 +291,11 @@ p.login-link{
     transition: all 0.8s ease-in-out 0s;
 }
 .usercenter-study-set-alone-translate{
+    /* word-break 可以实现自动换行; wordwrap不会斩断单词*/
+    word-break: break-all;
     width: 100%;
     position: absolute;
-    height: 150px;
+    height: 100%;
     top: 0;
     left: 0;
     background: rgba(255, 255, 255, 0.6);
@@ -309,10 +311,12 @@ p.login-link{
     transform: rotateY(0deg);
 }
 .usercenter-study-set-alone-title{
+    word-break: break-all;
     font-size: x-large;
     font-weight: 700;
 }
 .usercenter-study-set-alone-content{
+    word-break: break-all;
     font-size: medium;
     font-weight: 400;
 }
