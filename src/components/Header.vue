@@ -1,5 +1,5 @@
 <template>
-  <header style="position: sticky; top: 0px; z-index: 4;">
+  <header style="position: sticky; top: 0px; z-index: 2000;">
     <nav class="navbar navbar-expand-lg navbar-light bg-light head-bar">
       <a class="navbar-brand head-bar-items" @click="backhome"
         >KillWord Master</a
