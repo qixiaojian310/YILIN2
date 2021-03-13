@@ -4,7 +4,10 @@
     }
 }
 
-@media(min-width:974px){
+@media(min-width:992px){
+    .login-head-box{
+        margin-left: 15vw;
+    }
     .login-head{
         transform: translateX(-50%);
     }
@@ -12,7 +15,10 @@
         transform: translateX(-50%);
     }
 }
-@media (max-width: 974px){
+@media (max-width: 992px){
+    .login-head-box{
+        margin-left: 0;
+    }
     .login-head{
         width: 50px;
         transform: translateX(0);
@@ -77,7 +83,6 @@
 }
 .login-head-box{
     z-index: 2001;
-    margin-right: 11%;
 }
 .login-head{
     z-index: 2002;

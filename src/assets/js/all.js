@@ -1,6 +1,7 @@
 function autochange() {
   var width = $(window).width();
   var headicon_width = width * 0.05 + 'px';
+  console.log("lala");
   if (width > 992) {
     $(".login-head").css("width", headicon_width);
   } else {
