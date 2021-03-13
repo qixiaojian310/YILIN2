@@ -3,19 +3,24 @@
         max-width: 1400px;
     }
 }
-@media (max-width: 992px){
-    .dropdown-content{
-        right: -200%;
+
+@media(min-width:974px){
+    .login-head{
+        transform: translateX(-50%);
     }
+    .dropdown-content{
+        transform: translateX(-50%);
+    }
+}
+@media (max-width: 974px){
     .login-head{
         width: 50px;
+        transform: translateX(0);
+    }
+    .dropdown-content{
+        transform: translateX(0);
     }
 
-}
-@media (min-width: 992px){
-    .dropdown-content{
-        right: 0%;
-    }
 }
 
 @media (max-width: 500px){
@@ -70,23 +75,32 @@
     width: 100%;
     background:rgba(150,150,150,0.2);
 }
+.login-head-box{
+    z-index: 2001;
+    margin-right: 11%;
+}
 .login-head{
+    z-index: 2002;
     position: relative;
-    border-radius: 50%;
     display: block;
-    margin-right: 7% ; 
+}
+.login-head-pic{
+    border-radius: 50%;
 }
 .dropdown-content {
-    z-index: 10;
+    z-index: 3000;
     display: none;
     position: absolute;
     background-color: #f9f9f9;
     min-width: 160px;
     padding: 12px 16px;
 }
-.login-head:hover .dropdown-content{
-    display: inline-block;
+.login-head-box:hover .dropdown-content{
+    display: block;
     box-shadow: 0px 0px 40px rgb(107, 107, 107);
+}
+.login-head-box:hover .login-head{
+    text-decoration: none;
 }
 
 /* @media all and (max-width: 980px) */
@@ -283,7 +297,7 @@ p.login-link{
     display: flex;
     width: 100%;
     flex-direction: column;
-    height: 150px;
+    height: 100%;
     background: rgba(255, 255, 255, 0.6 );
     border-radius: 10px;
     border: 2px dashed;
@@ -291,9 +305,12 @@ p.login-link{
     transition: all 0.8s ease-in-out 0s;
 }
 .usercenter-study-set-alone-translate{
+    /* word-break 可以实现自动换行; wordwrap不会斩断单词*/
+    white-space: pre-wrap;
+    word-break: break-all;
     width: 100%;
     position: absolute;
-    height: 150px;
+    height: 100%;
     top: 0;
     left: 0;
     background: rgba(255, 255, 255, 0.6);
@@ -309,10 +326,14 @@ p.login-link{
     transform: rotateY(0deg);
 }
 .usercenter-study-set-alone-title{
+    white-space: pre-wrap;
+    word-break: break-all;
     font-size: x-large;
     font-weight: 700;
 }
 .usercenter-study-set-alone-content{
+    white-space: pre-wrap;
+    word-break: break-all;
     font-size: medium;
     font-weight: 400;
 }
@@ -428,6 +449,7 @@ p.login-link{
     position: absolute;
     right: 0;
     box-shadow: none;
+    z-index: 1000;
     /* background: rgb(241,241,241); */
     /* 0px 0px 20px rgb(90, 90, 90); */
 }

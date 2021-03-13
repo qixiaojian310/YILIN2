@@ -97,13 +97,18 @@
             <div class="col-xl-6 col-12 mt-5">
               <!-- 富文本编辑器位置 -->
               <div id="editor" class="col-12"></div>
+              <div class="col-12 d-flex justify-content-around my-4">
+                <input type="button" class="btn-homepage1" value="确认重点" @click="ensurekeynote" style="width:150px;height:50px"/>
+                <input type="button" value="撤销" class="btn-homepage2" @click="withdrawkeynote" style="width:150px;height:50px"/>
+              </div>
             </div>
             <div class="col-xl-5 col-12 offset-xl-1 offset-0 mt-5">
               <div class="col-12">
                 <div
+                  id="editor-show"
                   v-html="editorHtml"
                   class="col-12"
-                  style="border: 2px dotted; height: 335.8px; overflow-y: scroll"
+                  style="border: 2px dotted; height: 300px; overflow-y: scroll; z-index: 1000;"
                 ></div>
               </div>
             </div>
@@ -156,10 +161,30 @@ export default {
     const editor = new E("#editor");
     var that = this;
     editor.customConfig.menus = ["head", "bold", "italic", "underline"];
+    editor.customConfig.zIndex = 1000
+
+    // 确保show和editor的完全滚动同步和输入同步
     editor.customConfig.onchange = function(html) {
       that.editorHtml = html;
+      // 获取编辑器的滚动条高度
+      var editorScrollTop = editor.$textElem[0].scrollTop
+      // 设置显示部分的scrollTop
+      document.getElementById("editor-show").scrollTop = editorScrollTop
     };
     editor.create();
+    editor.$textElem[0].addEventListener('scroll',function(){
+      // 获取编辑器的滚动条高度
+      var editorScrollTop = editor.$textElem[0].scrollTop
+      // 设置显示部分的scrollTop
+      document.getElementById("editor-show").scrollTop = editorScrollTop
+    },true)
+    document.getElementById("editor-show").addEventListener('scroll',function(){
+      var showScrollTop = document.getElementById("editor-show").scrollTop
+      editor.$textElem[0].scrollTop = showScrollTop
+    },true)
+
+
+
     this.editor = editor;
     // 获取选择的文字
     var txtRange;
@@ -172,10 +197,11 @@ export default {
 
         var txtSelection = window.getSelection();
         txtRange = txtSelection.getRangeAt(0);
-        //获取所有的选中的节点
+        //获取所有的选中的节点，df相当于一个document对象
         var documentFragment = txtRange.cloneContents();
+        // 获取df下游多少个子节点，也就是选取的范围
         var count = documentFragment.childNodes.length;
-        //获取父亲节点
+        //获取父亲节点，编辑区域的dom节点
         parentNode = editor.$textElem[0];
         //返回父亲节点下的所有子节点
         allChildren = parentNode.childNodes;
@@ -189,6 +215,7 @@ export default {
         }
         // 终点所在位置
         var indexOfLastSelectNode;
+        console.log(window.getSelection().focusNode);
         for (let i = 0; i < allChildren.length; i++) {
           if (allChildren[i] == window.getSelection().focusNode.parentNode) {
             indexOfLastSelectNode = i;
@@ -217,6 +244,12 @@ export default {
   methods:{
     cardEnsure: function(value) {
       this.wordCardSet.push(value)
+    },
+    ensurekeynote: function(){
+      this.editor.cmd.do('backColor','#FFD770')
+    },
+    withdrawkeynote: function(){
+      this.editor.cmd.do('backColor',"#FFFFFF")
     }
   }
 };
@@ -242,5 +275,9 @@ export default {
   .container {
     min-width: 540px !important;
   }
+}
+#editor-show p{
+  margin: 10px 0px;
+  line-height: 1.5;
 }
 </style>

@@ -1,17 +1,13 @@
 <template>
-  <div class="col-12 p-0 m-3">
+  <div class="col-12 p-0 my-2">
     <div class="set-rotate-trigger">
       <div
-        class="usercenter-study-set-alone text-center justify-content-center align-items-center"
+        class="usercenter-study-set-alone text-center justify-content-center align-items-center p-3"
       >
-        <p class="usercenter-study-set-alone-title">{{ title }}</p>
-        <p class="usercenter-study-set-alone-content">
-          {{ content }}
-        </p>
+        <pre class="usercenter-study-set-alone-title text-left">{{ title }}</pre>
+        <pre class="usercenter-study-set-alone-content text-left">{{ content }}</pre>
       </div>
-      <div class="usercenter-study-set-alone-translate text-center">
-        {{ rotateContent }}
-      </div>
+      <pre class="usercenter-study-set-alone-translate text-left p-3">{{ rotateContent }}</pre>
     </div>
   </div>
 </template>

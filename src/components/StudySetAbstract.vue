@@ -20,7 +20,7 @@
         </div>
         <div class="study-set-content">
           <div class="study-set-content-font p-4">
-            <p v-if="studySet.studysetensure">{{ studySet.studySetContent }}</p>
+            <pre v-if="studySet.studysetensure" style="white-space: pre-wrap;word-break: break-all">{{ studySet.studySetContent }}</pre>
             <text-area-component v-else @textareainput="getTextAreaValue" :id="'studysetcontent'+studysetid"></text-area-component>
           </div>
         </div>
