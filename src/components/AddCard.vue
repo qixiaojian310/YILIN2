@@ -1,5 +1,5 @@
 <template>
-  <div class="col-12 m-3 d-flex flex-column justify-content-center align-items-center add-card">
+  <div class="col-12 my-2 d-flex flex-column justify-content-center align-items-center add-card">
     <p>title</p>
     <input type="text" placeholder="输入标题" v-model="wordCard.title" :style="{width: '90%'}">
     <p>content</p>

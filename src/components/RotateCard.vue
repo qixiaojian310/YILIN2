@@ -1,5 +1,5 @@
 <template>
-  <div class="col-12 p-0 m-3">
+  <div class="col-12 p-0 my-2">
     <div class="set-rotate-trigger">
       <div
         class="usercenter-study-set-alone text-center justify-content-center align-items-center p-3"

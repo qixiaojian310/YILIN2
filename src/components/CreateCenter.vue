@@ -97,6 +97,10 @@
             <div class="col-xl-6 col-12 mt-5">
               <!-- 富文本编辑器位置 -->
               <div id="editor" class="col-12"></div>
+              <div class="col-12 d-flex justify-content-around my-4">
+                <input type="button" class="btn-homepage1" value="确认重点" @click="ensurekeynote" style="width:150px;height:50px"/>
+                <input type="button" value="撤销" class="btn-homepage2" @click="withdrawkeynote" style="width:150px;height:50px"/>
+              </div>
             </div>
             <div class="col-xl-5 col-12 offset-xl-1 offset-0 mt-5">
               <div class="col-12">
@@ -240,6 +244,12 @@ export default {
   methods:{
     cardEnsure: function(value) {
       this.wordCardSet.push(value)
+    },
+    ensurekeynote: function(){
+      this.editor.cmd.do('backColor','#FFD770')
+    },
+    withdrawkeynote: function(){
+      this.editor.cmd.do('backColor',"#FFFFFF")
     }
   }
 };
