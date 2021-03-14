@@ -13,18 +13,27 @@ import backPic1 from "../assets/picture/background1.jpg";
 import backPic2 from "../assets/picture/background2.jpg";
 import backPic3 from "../assets/picture/background3.jpg";
 import backPic4 from "../assets/picture/background4.jpg";
-var width;
-var height = $(window).height();
-let faceTop = 0;
 
 export default {
   name: "HomePage",
   data() {
     return {
-      src: backPic1
+      src: backPic1,
+      rollTexts: [
+        "content1",
+        "content2",
+        "content3",
+        "content4",
+        "content5",
+        "content6"
+      ]
     };
   },
   mounted: function() {
+    var width;
+    var height = $(window).height();
+    let faceTop = 0;
+
     window.addEventListener("scroll", this.scrollSwitch, true);
     console.log(this.src);
     $("#htc-1").css("height", height * 0.9 + "px");
@@ -53,45 +62,27 @@ export default {
     autochange_base();
     //轮播
     $(window).resize(autochange_base);
-    $("#homepage-roll-text").html("Aaaaaaaaaaaaa");
-    $("#homepage-roll-text").fadeIn(2500);
-    $("#homepage-roll-text").fadeOut(500);
     var count = 0;
-    setInterval(autochange, 4000);
 
-    function show1() {
-      $("#homepage-roll-text").html("Bbbbbbbbbbbb");
-      $("#homepage-roll-text").fadeIn(2500);
-      $("#homepage-roll-text").fadeOut(500);
+    var hompageVm = this;
+    function show1(i) {
+      $("#homepage-roll-text").html(hompageVm.rollTexts[i]);
+      $("#homepage-roll-text").fadeIn(1500);
+      setTimeout(function() {
+        $("#homepage-roll-text").fadeOut(1500);
+      }, 3000);
+      return i + 1;
     }
-
-    function show2() {
-      $("#homepage-roll-text").html("Cccccccccccc");
-      $("#homepage-roll-text").fadeIn(2500);
-      $("#homepage-roll-text").fadeOut(500);
-    }
-
-    function show0() {
-      $("#homepage-roll-text").html("Aaaaaaaaaaaa");
-      $("#homepage-roll-text").fadeIn(2500);
-      $("#homepage-roll-text").fadeOut(500);
-    }
-
     function autochange() {
-      if (count == 0) {
-        show1();
-      }
-      if (count == 1) {
-        show2();
-      }
-      if (count == 2) {
-        show0();
-      }
-      count = count + 1;
-      if (count > 2) {
+      count = show1(count);
+      if (count > hompageVm.rollTexts.length - 1) {
         count = 0;
       }
+      return autochange;
     }
+    // js中函数参数如果是”函数名+()“，则会先执行函数，然后将返回值作为真正的参数
+    // 。相反参数没加“（）”则会被作为一个函数块指针，不先执行。
+    setInterval(autochange(), 6000);
     faceTop = document.getElementById("face").getBoundingClientRect().top;
     $(".homepage-background").css(
       "bottom",
@@ -103,6 +94,9 @@ export default {
   },
   methods: {
     scrollSwitch: function() {
+      var width;
+      var height = $(window).height();
+      let faceTop = 0;
       faceTop = document.getElementById("face").getBoundingClientRect().top;
       let faceBottom = document.getElementById("face").getBoundingClientRect()
         .bottom;
