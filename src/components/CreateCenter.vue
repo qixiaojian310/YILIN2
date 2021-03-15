@@ -1,11 +1,11 @@
 <template>
   <div>
-    <div class="study-set-head">
+    <div class="study-set-head pb-2">
       <div class="container">
         <div class="row clearfix">
           <div class="col-12">
             <form
-              class="form-horizontal row mt-4 d-flex flex-wrap align-items-stretch"
+              class="form-horizontal row mt-1 d-flex flex-wrap align-items-stretch"
               role="form"
             >
               <div class="col-9 p-3 create-study-set-head">

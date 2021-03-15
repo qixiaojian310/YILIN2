@@ -11,8 +11,8 @@ import HomeFace from "./HomeFace.vue";
 import HomeIntro from "./HomeIntro.vue";
 import backPic1 from "../assets/picture/background1.jpg";
 import backPic2 from "../assets/picture/background2.jpg";
-import backPic3 from "../assets/picture/background3.jpg";
-import backPic4 from "../assets/picture/background4.jpg";
+import backPic3 from "../assets/picture/opensource.jpg";
+import backPic4 from "../assets/picture/idea.jpg";
 
 export default {
   name: "HomePage",

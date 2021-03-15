@@ -7,6 +7,8 @@ body {
 }
 
 .study-set-head {
+    z-index: 1001;
+    position: relative;
     background: linear-gradient(to bottom, rgb(132, 133, 135), rgb(255,255,255));
     width: 100%;
     -bottom: auto;
