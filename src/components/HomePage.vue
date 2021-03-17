@@ -18,7 +18,10 @@ export default {
   name: "HomePage",
   data() {
     return {
-      src: backPic1,
+      opacity1: 1.0,
+      opacity2: 0.0,
+      src1: backPic1,
+      src2: backPic4,
       rollTexts: [
         "content1",
         "content2",
@@ -35,7 +38,7 @@ export default {
     let faceTop = 0;
 
     window.addEventListener("scroll", this.scrollSwitch, true);
-    console.log(this.src);
+    console.log(this.src1);
     $("#htc-1").css("height", height * 0.9 + "px");
     $("#htc-2").css("height", height * 0.9 + "px");
 
@@ -48,6 +51,7 @@ export default {
       $("#htc-2").css("height", height * 0.9 + "px");
       //调整每个块（content）的高让其刚好覆盖页面
       $(".homepage-background").css("height", height * 1.2 + "px");
+      $(".homepage-background").css("width", width * 1.2 + "px");
       $(".homepage-content-nopicture").css("height", height * 0.9 + "px");
       $(".homepage-content-picture").css("height", height * 0.9 + "px");
       if (width > 576) {
@@ -94,25 +98,32 @@ export default {
   },
   methods: {
     scrollSwitch: function() {
-      var width;
       var height = $(window).height();
       let faceTop = 0;
       faceTop = document.getElementById("face").getBoundingClientRect().top;
       let faceBottom = document.getElementById("face").getBoundingClientRect()
         .bottom;
+      let faceBottomCalc = faceBottom+height*0.9;
       if (faceTop < height * 0.1 && faceBottom > 0) {
         $(".homepage-background").css(
           "bottom",
           (-height * 0.9 - faceTop) * 0.15 + "px"
         );
         // $(".homepage-background").css("background", "url(\"../picture/background1.jpg\") no-repeat");
-        this.src = backPic1;
-        $(".homepage-background").css("background-size", "120% 120%");
+        $(".homepage-background").css("background-size", "100% 120%");
+      }
+              // bottom从height到-0.9height所以我们对他进行归一化,这里要注意进入条件
+      if(faceTop < height * 0.1 && faceBottomCalc > 0){
+        this.src1 = backPic1;
+        this.src2 = backPic4;
+        this.opacity2 = Math.pow(1-Math.pow((faceBottomCalc/1.9/height),1.2),5/6)
+        this.opacity1 = 1-Math.pow(1-Math.pow((faceBottomCalc/1.9/height),1.2),5/6)
       }
       //获取intro相对于视窗的高
       let offsetIntro1Bottom = document
         .getElementById("intro1")
         .getBoundingClientRect().bottom;
+      let offsetIntro1BottomCalc = offsetIntro1Bottom+height*0.9
       let offsetIntro1Top = document
         .getElementById("intro1")
         .getBoundingClientRect().top;
@@ -122,13 +133,19 @@ export default {
           (0 - height * 1.8 - offsetIntro1Top) * 0.15 + "px"
         );
         // $(".homepage-background").css("background", "url(\"../picture/background4.jpg\") no-repeat");
-        console.log("change4");
-        this.src = backPic4;
-        $(".homepage-background").css("background-size", "120% 120%");
+        
+        $(".homepage-background").css("background-size", "100% 120%");
+      }
+      if(offsetIntro1Top+0.9*height < height * 0.1 && offsetIntro1BottomCalc > 0){
+        this.src2 = backPic4;
+        this.src1 = backPic2;
+        this.opacity1 = Math.pow(1-Math.pow((offsetIntro1BottomCalc/1.9/height),1.2),5/6)
+        this.opacity2 = 1-Math.pow(1-Math.pow((offsetIntro1BottomCalc/1.9/height),1.2),5/6)
       }
       let offsetIntro2Bottom = document
         .getElementById("intro2")
         .getBoundingClientRect().bottom;
+      let offsetIntro2BottomCalc = offsetIntro2Bottom+height*0.9
       let offsetIntro2Top = document
         .getElementById("intro2")
         .getBoundingClientRect().top;
@@ -138,12 +155,19 @@ export default {
           (0 - height * 1.8 - offsetIntro2Top) * 0.15 + "px"
         );
         // $(".homepage-background").css("background", "url(\"../picture/background2.jpg\") no-repeat");
-        this.src = backPic2;
-        $(".homepage-background").css("background-size", "120% 120%");
+        
+        $(".homepage-background").css("background-size", "100% 120%");
+      }
+      if(offsetIntro2Top+0.9*height < height * 0.1 && offsetIntro2BottomCalc > 0){
+        this.src1 = backPic2;
+        this.src2 = backPic3;
+        this.opacity2 = Math.pow(1-Math.pow((offsetIntro2BottomCalc/1.9/height),1.2),5/6)
+        this.opacity1 = 1-Math.pow(1-Math.pow((offsetIntro2BottomCalc/1.9/height),1.2),5/6);
       }
       let offsetIntro3Bottom = document
         .getElementById("intro3")
         .getBoundingClientRect().bottom;
+      let offsetIntro3BottomCalc = offsetIntro3Bottom+height*0.9
       let offsetIntro3Top = document
         .getElementById("intro3")
         .getBoundingClientRect().top;
@@ -154,8 +178,12 @@ export default {
         );
         // $(".homepage-background").css("background", "url(\"../picture/background3.jpg\") no-repeat");
         console.log("change3");
-        this.src = backPic3;
-        $(".homepage-background").css("background-size", "120% 120%");
+        $(".homepage-background").css("background-size", "100% 120%");
+      }
+      if(offsetIntro3Top+0.9*height < height * 0.1 && offsetIntro3BottomCalc > 0){
+        this.src1 = backPic3;
+        this.opacity1 = Math.pow(1-Math.pow((offsetIntro3BottomCalc/1.9/height),1.2),5/6);
+        this.opacity2 = 1-Math.pow(1-Math.pow((offsetIntro3BottomCalc/1.9/height),1.2),5/6);
       }
     },
     test: function() {

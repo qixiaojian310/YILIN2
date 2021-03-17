@@ -1,6 +1,7 @@
 <template>
   <div>
-    <div class="homepage-background" :style="{'zIndex':'1', 'background': 'url('+src+') no-repeat', 'backgroundSize': '120% 120%',}"></div>
+    <div class="homepage-background" id="background1" :style="{'zIndex':'2', 'background': 'url('+src1+') no-repeat', 'backgroundSize': '100% 120%', opacity: opacity1}"></div>
+    <div class="homepage-background" id="background2" :style="{'zIndex':'1', 'background': 'url('+src2+') no-repeat', 'backgroundSize': '100% 120%', opacity: opacity2}"></div>
     <div class="homepage-title d-block d-sm-flex" style="z-index: 2;" id="face">
       <div class="homepage-title-content1 d-flex" id="htc-1">
         <div class="container d-flex">
@@ -54,8 +55,17 @@
 export default {
   name: "HomeFace",
   computed: {
-    src: function(){
-      return this.$parent.src
+    src1: function(){
+      return this.$parent.src1
+    },
+    src2: function(){
+      return this.$parent.src2
+    },
+    opacity1: function(){
+      return this.$parent.opacity1
+    },
+    opacity2: function(){
+      return this.$parent.opacity2
     }
   },
   methods: {
