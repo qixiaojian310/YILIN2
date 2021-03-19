@@ -11,12 +11,12 @@
           </div>
           <div class="col-10 align-content-center">
             <p class="usercenter-info-text mb-5">快点创建属于你自己的学习集</p>
-            <a
+            <router-link
               class="btn-homepage1 px-5 py-3"
               style="text-decoration: none"
-              @click="tostudysetbrowser"
-              >添加学习集</a
-            >
+              to="/studySet"
+              >添加学习集
+            </router-link>
           </div>
         </div>
         <h3 class="mt-5 col-4">学习集预览</h3>
@@ -140,13 +140,7 @@ export default {
   },
   components: {
     UserSideBar,
-    RotateCard
-  },
-  methods: {
-    tostudysetbrowser: function() {
-      console.log(this);
-      this.$root.$children[0].showPage = "study-set-browser";
-    }
+    RotateCard,
   }
 };
 </script>

@@ -240,7 +240,7 @@ p.login-link{
     background: black;
     width: 100%;
 }
-@media all and (max-width: 992px){
+@media all and (max-width: 768px){
     .usercenter-sidebar{
         position: relative;
     }
@@ -257,6 +257,7 @@ p.login-link{
     box-shadow: 0px 5px 10px rgb(107, 107, 107);
     border-color: rgb(10, 10, 10);
     border-bottom-width: 0px;
+    top: 10%;
 }
 .usercenter-sidebar::-webkit-scrollbar{
     width: 6px;

@@ -2,7 +2,7 @@
   <div>
     <div class="homepage-background" id="background1" :style="{'zIndex':'2', 'background': 'url('+src1+') no-repeat', 'backgroundSize': '100% 120%', opacity: opacity1}"></div>
     <div class="homepage-background" id="background2" :style="{'zIndex':'1', 'background': 'url('+src2+') no-repeat', 'backgroundSize': '100% 120%', opacity: opacity2}"></div>
-    <div class="homepage-title d-block d-sm-flex" style="z-index: 2;" id="face">
+    <div class="homepage-title d-block d-sm-flex" style="z-index: 3; position: relative;" id="face">
       <div class="homepage-title-content1 d-flex" id="htc-1">
         <div class="container d-flex">
           <div class="row align-content-center">
@@ -16,13 +16,12 @@
                 <h5 class="homepage-h1 pb-5">
                   精通任何学科，一次成功
                 </h5>
-                <button
-                  href="#"
+                <router-link
                   class="mb-5 col-8 text-center btn-lg btn-homepage1 btn-block pb-3 pt-3"
-                  @click="test"
+                  to="/userCenter"
                 >
                   开始学习
-                </button>
+                </router-link>
               </div>
               <div class="col-7 offset-2">
                 <a href="#" class="col-6 homepage-entrance">

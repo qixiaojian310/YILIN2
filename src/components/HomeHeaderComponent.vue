@@ -33,7 +33,6 @@
           <li class="nav-item">
             <a
               class="nav-link head-bar-items login"
-              href="#"
               tabindex="-1"
               aria-disabled="true"
               >Login</a

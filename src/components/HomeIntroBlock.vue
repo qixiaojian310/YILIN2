@@ -1,6 +1,6 @@
 <template>
   <div :id="id">
-    <div class="homepage-title" style="z-index: 2; height:90%">
+    <div class="homepage-title" style="z-index: 3; height:90%;">
       <div
         class="homepage-content-nopicture align-items-center"
         :style="{background: this.backgroundimg, 'background-size': '100% 100%'}"
@@ -9,7 +9,7 @@
           <div class="container">
             <div class="row">
               <div class="col-md-6 col-10 offset-md-0 offset-1 content-box p-5">
-                <p class="description-box" data-aos="fade-right">{{ description1 }}</p>
+                <p class="description-box" data-aos="fade-right">{{ this.description1 }}</p>
               </div>
               <div class="col-md-6 col-10 offset-md-0 offset-1 content-box">
                 <div class="tag-box">
@@ -67,8 +67,10 @@ export default {
 }
 .content-box {
   display: flex;
+  position: relative;
   justify-content: center;
   align-items: center;
+  color: white;
 }
 .container {
   height: 100%;

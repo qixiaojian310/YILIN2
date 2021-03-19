@@ -1,9 +1,11 @@
 <template>
   <header style="position: sticky; top: 0px; z-index: 3000;">
     <nav class="navbar navbar-expand-lg navbar-light bg-light head-bar">
-      <a class="navbar-brand head-bar-items" @click="backhome"
-        >KillWord Master</a
-      >
+      <router-link to="/home">
+        <a class="navbar-brand head-bar-items"
+          >KillWord Master</a
+        >
+      </router-link>
       <button
         class="navbar-toggler"
         type="button"
@@ -16,8 +18,14 @@
         <span class="navbar-toggler-icon"></span>
       </button>
 
-      <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
-        <create-header v-if="pagename === 'create-center'" :img="img"></create-header>
+      <div
+        class="collapse navbar-collapse justify-content-between"
+        id="navbarSupportedContent"
+      >
+        <create-header
+          v-if="pagename === '/createCenter'"
+          :img="img"
+        ></create-header>
         <home-header v-else :img="img"></home-header>
       </div>
     </nav>
@@ -26,26 +34,21 @@
 
 <script>
 import HeadIcon from "../assets/picture/head1.jpg";
-import HomeHeader from './HomeHeaderComponent';
-import CreateHeader from './CreateCenterHeaderComponent';
+import HomeHeader from "./HomeHeaderComponent";
+import CreateHeader from "./CreateCenterHeaderComponent";
 import "../assets/css/create-study-set.css";
 
 export default {
   name: "Header",
   data() {
     return {
-      img: HeadIcon,
+      img: HeadIcon
     };
-  },
-  methods: {
-    backhome: function() {
-      this.$parent.showPage = 'home-page'
-    }
   },
   components: {
     HomeHeader,
-    CreateHeader,
+    CreateHeader
   },
-  props:['pagename']
+  props: ["pagename"]
 };
 </script>

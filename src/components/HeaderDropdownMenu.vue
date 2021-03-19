@@ -37,11 +37,13 @@ export default {
   mounted: function() {
     var width = $(window).width();
     var headicon_width = width * 0.05 + "px";
-    console.log("lala");
+    console.log(headicon_width);
     if (width > 992) {
       $(".login-head").css("width", headicon_width);
+      $(".login-head").css("height",headicon_width);
     } else {
       $(".login-head").css("width", "50px");
+      $(".login-head").css("height","50px");
     }
   }
 };

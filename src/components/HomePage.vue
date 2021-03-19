@@ -1,6 +1,6 @@
 <template>
   <div>
-    <home-face ref="HomeFace" @tousercenter="test"></home-face>
+    <home-face ref="HomeFace"></home-face>
     <home-intro></home-intro>
   </div>
 </template>
@@ -185,9 +185,6 @@ export default {
         this.opacity1 = Math.pow(1-Math.pow((offsetIntro3BottomCalc/1.9/height),1.2),5/6);
         this.opacity2 = 1-Math.pow(1-Math.pow((offsetIntro3BottomCalc/1.9/height),1.2),5/6);
       }
-    },
-    test: function() {
-      this.$emit("tousercenter");
     }
   },
   components: {

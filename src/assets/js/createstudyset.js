@@ -28,10 +28,10 @@ export default function createInit() {
 
     var ram_height = area1_height;
     if (ram_height < area2_height) {
-      ram_height = area1_height
+      ram_height = area2_height
     }
     $(".create-set-background").css("height", ram_height + 100 + $("header").height() + "px")
-
+    
 
     if (flag == true) {
       $(".study-set-show-area2").hide(0);

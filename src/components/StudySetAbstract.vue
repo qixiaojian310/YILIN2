@@ -28,11 +28,11 @@
       <div
         class="col-3 col-md-1 d-flex justify-content-center align-items-center"
       >
-        <a
-          @click="tocreatecenter"
+        <router-link
+          to="/createCenter"
           class="fa fa-arrow-right fa-3x study-set-detail-link"
           v-if="studySet.studysetensure"
-        ></a>
+        ></router-link>
         <a
           @click="studysetsure"
           class="fa fa-check-circle fa-3x study-set-detail-link"
@@ -68,9 +68,6 @@ export default {
       this.studySet.studysetensure = true;
       this.$emit('getindex')
       this.$emit('ready', this.studySet)
-    },
-    tocreatecenter: function() {
-      this.$root.$children[0].showPage = 'create-center'
     },
     getTextAreaValue: function(value){
       this.studySet.studySetContent = value
