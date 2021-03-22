@@ -15,14 +15,17 @@
   "dependencies": {
     "animate.css": "^3.7.2",
     "aos": "^2.3.4",
+    "axios": "^0.20.0-0",
     "bootstrap": "^4.6.0",
     "font-awesome": "^4.7.0",
     "jquery": "^3.6.0",
     "jquery-ui-dist": "^1.12.1",
     "popper.js": "^1.16.1",
+    "qs": "^6.10.0",
     "swiper": "^5.4.5",
     "vue": "^2.5.2",
     "vue-awesome-swiper": "^4.1.1",
+    "vue-axios": "^3.2.4",
     "vue-router": "^3.5.1",
     "wangeditor": "^3.1.1",
     "wowjs": "^1.1.3"

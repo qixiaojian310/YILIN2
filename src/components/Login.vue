@@ -37,6 +37,7 @@
                 name="username"
                 width="100%"
                 height="20%"
+                v-model="loginMessage.userName"
               />
               <div class="input-border"></div>
               <p
@@ -56,6 +57,7 @@
                 placeholder="password"
                 name="password"
                 height="20px"
+                v-model="loginMessage.password"
               />
               <div class="input-border"></div>
               <p
@@ -70,9 +72,10 @@
             </div>
             <div class="d-flex justify-content-center">
               <input
-                type="submit"
+                type="button"
                 value="submit"
                 class="btn-homepage2 btn-block pb-2 pt-2"
+                @click="userSubmit"
               />
             </div>
             <div class="d-flex justify-content-center pt-4">
@@ -99,7 +102,31 @@
 </template>
 
 <script>
+import qs from 'qs'
+
 export default {
-	name: "Login"
+	name: "Login",
+  data(){
+    return{
+      loginMessage:{
+        userName: "",
+        password: ""
+      }
+    }
+  },
+  methods:{
+    userSubmit:function(){
+      let loginVm = this
+      let content = {
+        username: loginVm.loginMessage.userName,
+        password: loginVm.loginMessage.password
+      }
+      this.axios.post('/api/test',qs.stringify(content)).then(function(response){
+        console.log(response)
+      }).catch(function(error){
+        console.log(error);
+      })
+    }
+  }
 }
 </script>

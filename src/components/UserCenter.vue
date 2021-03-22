@@ -128,6 +128,32 @@ export default {
               rotateContent: '123456'
             }
           ]
+        ],
+        [
+          [
+            {
+              title: 'jianjian',
+              content: '12345',
+              rotateContent: '123456'
+            },
+            {
+              title: '1234',
+              content: '12345',
+              rotateContent: 'jianjian'
+            }
+          ],
+          [
+            {
+              title: '1234',
+              content: '12345',
+              rotateContent: '123456'
+            },
+            {
+              title: '1234',
+              content: '12345',
+              rotateContent: '123456'
+            }
+          ]
         ]
       ]
     };
