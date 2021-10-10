@@ -8,7 +8,8 @@
         <div :style="{ backgroundColor: this.backgroundcolor, width: '100%', 'height': '100%' }">
           <div class="container">
             <div class="row">
-              <div class="col-md-6 col-10 offset-md-0 offset-1 content-box p-5">
+              <div class="col-md-5 col-10 offset-1 content-box px-5 px-md-2">
+                <p class="title-box" data-aos="fade-right">{{this.title1}}</p>
                 <p class="description-box" data-aos="fade-right">{{ this.description1 }}</p>
               </div>
               <div class="col-md-6 col-10 offset-md-0 offset-1 content-box">
@@ -30,7 +31,8 @@
                 <img :src="pic2" alt="homepage" width="95%" />
               </div>
             </div>
-            <div class="col-md-6 col-10 offset-md-0 offset-1 content-box p-5">
+            <div class="col-md-5 col-10 offset-1 content-box px-5 px-md-2">
+              <p class="title-box" data-aos="fade-left">{{this.title2}}</p>
               <p class="description-box" data-aos="fade-left">{{ description2 }}</p>
             </div>
           </div>
@@ -49,6 +51,8 @@ export default {
     "pic2",
     "description1",
     "description2",
+    "title1",
+    "title2",
     "backgroundimg",
     "backgroundcolor"
   ]
@@ -56,10 +60,17 @@ export default {
 </script>
 
 <style>
+@media(max-width: 768px){
+  .tag-box{
+    width: 60%;
+  }
+}
+@media(min-width: 768px){
+  .tag-box{
+    width: 80%;
+  }
+}
 .tag-box {
-  width: 80%;
-  border: 2px dashed;
-  border-radius: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -71,6 +82,7 @@ export default {
   justify-content: center;
   align-items: center;
   color: white;
+  flex-direction: column;
 }
 .container {
   height: 100%;
@@ -78,8 +90,11 @@ export default {
 .row {
   height: 100%;
 }
-.description-box {
-  padding: 10% 10%;
-  background: rgba(0, 0, 0, 0.15);
+/* .description-box {
+
+} */
+.title-box{
+  font-size: 45px;
+  font-weight: 800;
 }
 </style>

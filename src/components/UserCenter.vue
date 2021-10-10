@@ -80,8 +80,8 @@ export default {
         [
           [
             {
-              title: '1234',
-              content: '12345',
+              title: '12342344',
+              content: '123443245',
               rotateContent: 'lala'
             },
             {

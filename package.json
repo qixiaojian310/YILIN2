@@ -22,11 +22,13 @@
     "jquery-ui-dist": "^1.12.1",
     "popper.js": "^1.16.1",
     "qs": "^6.10.0",
+    "simplebar-vue": "^1.6.0",
     "swiper": "^5.4.5",
     "vue": "^2.5.2",
     "vue-awesome-swiper": "^4.1.1",
     "vue-axios": "^3.2.4",
     "vue-router": "^3.5.1",
+    "vuejs-progress-bar": "^1.2.4",
     "wangeditor": "^3.1.1",
     "wowjs": "^1.1.3"
   },

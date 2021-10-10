@@ -3,9 +3,6 @@
 import Vue from 'vue'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
-import App from './App'
-
-import router from './router/index'
 import $ from 'jquery'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.min'
@@ -14,8 +11,12 @@ import "jquery-ui-dist/jquery-ui.min.css"
 import "font-awesome/css/font-awesome.min.css"
 import "animate.css/animate.min.css"
 
+import App from './App'
+import router from './router/index'
+
 // Vue.prototype.$qs = qs
 Vue.use(VueAxios,axios)
+axios.defaults.baseURL = (process.env.NODE_ENV === 'development') ? '/proxy': ''
 Vue.config.productionTip = true
 
 /* eslint-disable no-new */

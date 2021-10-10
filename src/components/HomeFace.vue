@@ -23,36 +23,43 @@
                   开始学习
                 </router-link>
               </div>
-              <div class="col-7 offset-2">
-                <a href="#" class="col-6 homepage-entrance">
-                  我是老师
-                </a>
-                <a href="#" class="offset-1 homepage-entrance">
-                  我是学生
-                </a>
-              </div>
             </div>
           </div>
         </div>
       </div>
       <div class=" homepage-title-content2" id="htc-2">
-        <div class="container">
-          <div class="row">
-            <p
+        <div class="container p-0">
+            <div
               id="homepage-roll-text"
-              class="col-12 text-center"
+              class="col-12 text-center switch-content-box"
               style="font-size: 120%; color: black; font-weight: 700; display: none;"
-            ></p>
+            >
+              <switch-content1 v-if="showcontent === 'content1'"></switch-content1>
+              <switch-content2 v-else-if="showcontent === 'content2'"></switch-content2>
+              <switch-content3 v-else-if="showcontent === 'content3'"></switch-content3>
+              <switch-content4 v-else-if="showcontent === 'content4'"></switch-content4>             
+            </div>
           </div>
-        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import switchContent1 from "./SwitchContent1"
+import switchContent2 from "./SwitchContent2"
+import switchContent3 from "./SwitchContent3"
+import switchContent4 from "./SwitchContent4"
+
+
 export default {
   name: "HomeFace",
+  components:{
+    switchContent1,
+    switchContent2,
+    switchContent3,
+    switchContent4,
+  },
   computed: {
     src1: function(){
       return this.$parent.src1
@@ -71,9 +78,39 @@ export default {
     test: function(){
       this.$emit('tousercenter')
     }
-  }
+  },
+  props:['showcontent']
   // mounted: function () {
   //   console.log(this);
   // }
 }
 </script>
+
+<style>
+.switch-content{
+  width: 100%;
+  height: 100%;
+}
+.switch-content-box{
+  width: 100%;
+  height: 100%;
+  padding: 0% 0%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.switch-content-text{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  font-weight: 600;
+  height: 30%;
+}
+.switch-content-pic {
+  width: 100%;
+  height: 70%;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+</style>

@@ -5,6 +5,7 @@ export default function userSideBar(){
     console.log($("header").height())
     $(".usercenter-sidebar").css("top",sidebar_top);
     $(".usercenter-sidebar").css("height",sidebar_height);
+    $(".simplebar-userbar").css("height",sidebar_height);
   }
   autochangesize();
   $(window).resize(autochangesize);        

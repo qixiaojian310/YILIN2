@@ -8,23 +8,6 @@
         >
           <p class="col-12 p-4 text-left mask-title">Login</p>
         </div>
-        <div class="col-10 offset-1">
-          <div class="login-link mt-3 d-flex align-items-center">
-            <a href="#" class="col-12" style="text-decoration: none">
-              <p class="login-link text-right">用GOOGLE账户登录</p>
-            </a>
-          </div>
-          <div class="login-link mt-3 d-flex align-items-center">
-            <a href="#" class="col-12" style="text-decoration: none">
-              <p class="login-link text-right">用GOOGLE账户登录</p>
-            </a>
-          </div>
-          <div class="login-link mt-3 mb-4 d-flex align-items-center">
-            <a href="#" class="col-12" style="text-decoration: none">
-              <p class="login-link text-right">用GOOGLE账户登录</p>
-            </a>
-          </div>
-        </div>
         <form action="#" method="POST" class="col-12">
           <div
             class="d-flex flex-column align-items-stretch justify-content-around"
@@ -84,6 +67,7 @@
                 value="Sign up"
                 class="btn-homepage3 btn-block pb-2 pt-2"
                 id="sign-up"
+                @click="toSignUpPage"
               />
             </div>
             <div class="d-flex justify-content-center pt-4 pb-4">
@@ -126,6 +110,9 @@ export default {
       }).catch(function(error){
         console.log(error);
       })
+    },
+    toSignUpPage:function(){
+      this.$parent.$data.registerStatus = "signup"
     }
   }
 }

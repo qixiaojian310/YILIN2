@@ -1,6 +1,6 @@
 <template>
   <div>
-    <home-face ref="HomeFace"></home-face>
+    <home-face ref="HomeFace" :showcontent="this.showcontent"></home-face>
     <home-intro></home-intro>
   </div>
 </template>
@@ -26,10 +26,10 @@ export default {
         "content1",
         "content2",
         "content3",
-        "content4",
-        "content5",
-        "content6"
-      ]
+        "content4"
+      ],
+      showcontent: "",
+      idOfSetinterval: ""
     };
   },
   mounted: function() {
@@ -67,14 +67,13 @@ export default {
     //轮播
     $(window).resize(autochange_base);
     var count = 0;
-
     var hompageVm = this;
     function show1(i) {
-      $("#homepage-roll-text").html(hompageVm.rollTexts[i]);
-      $("#homepage-roll-text").fadeIn(1500);
+      hompageVm.showcontent = hompageVm.rollTexts[i]
+      $("#homepage-roll-text").fadeIn(300);
       setTimeout(function() {
-        $("#homepage-roll-text").fadeOut(1500);
-      }, 3000);
+        $("#homepage-roll-text").fadeOut(300);
+      }, 4000);
       return i + 1;
     }
     function autochange() {
@@ -86,7 +85,7 @@ export default {
     }
     // js中函数参数如果是”函数名+()“，则会先执行函数，然后将返回值作为真正的参数
     // 。相反参数没加“（）”则会被作为一个函数块指针，不先执行。
-    setInterval(autochange(), 6000);
+    hompageVm.idOfSetinterval =  setInterval(autochange(), 4600);
     faceTop = document.getElementById("face").getBoundingClientRect().top;
     $(".homepage-background").css(
       "bottom",
@@ -95,6 +94,7 @@ export default {
   },
   beforeDestroy: function() {
     window.removeEventListener("scroll", this.scrollSwitch, true);
+    clearInterval(this.idOfSetinterval)
   },
   methods: {
     scrollSwitch: function() {
@@ -109,8 +109,14 @@ export default {
           "bottom",
           (-height * 0.9 - faceTop) * 0.15 + "px"
         );
+        $(".head-bar").css("background", "rgba(39,39,39,1)")
         // $(".homepage-background").css("background", "url(\"../picture/background1.jpg\") no-repeat");
         $(".homepage-background").css("background-size", "100% 120%");
+        $(".login-head-box").show()
+      }
+      if(faceBottom < 0){
+        $(".head-bar").css("background", "rgba(39,39,39,0.7)")
+        $(".login-head-box").hide()
       }
               // bottom从height到-0.9height所以我们对他进行归一化,这里要注意进入条件
       if(faceTop < height * 0.1 && faceBottomCalc > 0){

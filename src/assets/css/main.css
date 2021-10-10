@@ -1,6 +1,6 @@
-@media (min-width: 1400px) {
+@media (min-width: 1300px) {
     .container{
-        max-width: 1400px;
+        max-width: 1300px;
     }
 }
 
@@ -37,8 +37,11 @@
         display: block !important;
     }
 }
+body{
+    overflow-x: hidden;
+}
 .head-bar{
-    background: rgb(39, 39, 39)!important;
+    background: rgba(39, 39, 39, 1);
     position: relative;
     z-index: 2;
 }
@@ -54,7 +57,7 @@
     background: rgba(225,225,225,0.5);
 }
 .homepage-title-content2{
-    background: rgba(220, 220, 220, 0.2);
+    background: rgba(143, 143, 143, 0.5);
 }
 .homepage-title{
     background: transparent;
@@ -76,8 +79,8 @@
     width: 100%;
     height: 90%;
     color: white;
-    font-size: xx-large;
-    font-weight: 200;
+    font-size: 20px;
+    font-weight: 500;
     box-shadow: 0px 0px 24px 10px rgb(10, 10, 10);
 }
 .homepage-content-picture{
@@ -85,8 +88,8 @@
     width: 100%;
     background:rgba(150,150,150,0.2);
     color: white;
-    font-size: xx-large;
-    font-weight: 200;
+    font-size: 20px;
+    font-weight: 500;
 }
 .login-head-box{
     z-index: 2001;
@@ -200,33 +203,28 @@ p.login-link{
     color: rgb(107, 107, 107);
 }
 #login-page {
-    display: flex;
     justify-content: center;
     align-items: center;
     background: white;
 	height:80%;
 	width:50%;
-	position:fixed;
 	top:10%;
 	left:24%;
+    position: absolute;
 	z-index:1000;
-	overflow:scroll;
-	display:none;
 	box-shadow: 0px 0px 50px 6px rgb(255, 255, 255);
 }
 #sign-up-page{
-    display: flex;
     justify-content: center;
     align-items: center;
     background: white;
 	height:80%;
 	width:50%;
-	position:fixed;
 	top:10%;
 	left:24%;
+    position: absolute;
 	z-index:1000;
-	overflow:scroll;
-	display:none;
+	display:block;
 	box-shadow: 0px 0px 50px 6px rgb(255, 255, 255);
 }
 .login-uesr-input{
@@ -251,15 +249,13 @@ p.login-link{
     }
 }
 .usercenter-sidebar{
-    overflow: auto;
     border: 1px solid;
     background: rgb(252, 252, 252);
     box-shadow: 0px 5px 10px rgb(107, 107, 107);
     border-color: rgb(10, 10, 10);
     border-bottom-width: 0px;
-    top: 10%;
 }
-.usercenter-sidebar::-webkit-scrollbar{
+/* .usercenter-sidebar::-webkit-scrollbar{
     width: 6px;
     background:rgb(116, 116, 116);
 }
@@ -267,7 +263,7 @@ p.login-link{
     border-radius: 1px;
     box-shadow: 0 0 0.5px rgba(0, 0, 0, 0.3);
     background:rgb(59, 91, 109);
-}
+} */
 .usercenter-sidebar-link{
     color: rgb(10, 10, 10);
     font-size: large;

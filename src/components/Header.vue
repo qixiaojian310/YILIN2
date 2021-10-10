@@ -1,6 +1,6 @@
 <template>
   <header style="position: sticky; top: 0px; z-index: 3000;">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light head-bar">
+    <nav class="navbar navbar-expand-lg navbar-light head-bar">
       <router-link to="/home">
         <a class="navbar-brand head-bar-items"
           >KillWord Master</a

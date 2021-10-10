@@ -9,6 +9,7 @@ import createCenter from "../components/CreateCenter.vue"
 import createCenterHeaderComponent from "../components/CreateCenterHeaderComponent.vue"
 import homeHeaderComponent from "../components/HomeHeaderComponent.vue"
 import studySetBrowser from "../components/StudySetBrowser.vue"
+import register from "../components/RegisterPage.vue"
 
 
 // 配置路由
@@ -40,6 +41,12 @@ const router = new Vuerouter({
     components:{
       default:createCenter,
       createCenter:createCenterHeaderComponent
+    }
+  },{
+    path:'/registerCenter',
+    components:{
+      default:register,
+      home: homeHeaderComponent
     }
   }]
 })

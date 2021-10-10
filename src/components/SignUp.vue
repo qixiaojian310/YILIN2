@@ -8,23 +8,6 @@
         >
           <p class="col-12 p-4 text-left mask-title">Sign up</p>
         </div>
-        <div class="col-10 offset-1">
-          <div class="login-link mt-3 d-flex align-items-center">
-            <a href="#" class="col-12" style="text-decoration: none">
-              <p class="login-link text-right">用GOOGLE账户注册</p>
-            </a>
-          </div>
-          <div class="login-link mt-3 d-flex align-items-center">
-            <a href="#" class="col-12" style="text-decoration: none">
-              <p class="login-link text-right">用GOOGLE账户注册</p>
-            </a>
-          </div>
-          <div class="login-link mt-3 mb-4 d-flex align-items-center">
-            <a href="#" class="col-12" style="text-decoration: none">
-              <p class="login-link text-right">用GOOGLE账户注册</p>
-            </a>
-          </div>
-        </div>
         <form action="#" method="POST" class="col-12">
           <p
             class="col-12"
@@ -100,6 +83,7 @@
               <input
                 type="button"
                 value="login"
+                @click="toLoginPage"
                 class="login btn-homepage3 btn-block pb-2 pt-2"
               />
             </div>
@@ -120,6 +104,20 @@
 
 <script>
 export default {
-	name: 'SignUp'
-}
+  name: "SignUp",
+  mounted: function() {
+    $("#datepicker").datepicker({
+      showOtherMonths: true,
+      selectOtherMonths: true,
+      changeMonth: true,
+      changeYear: true
+    });
+    $(".checkbox").checkboxradio();
+  },
+  methods:{
+    toLoginPage:function(){
+      this.$parent.$data.registerStatus = "login"
+    }
+  }
+};
 </script>
